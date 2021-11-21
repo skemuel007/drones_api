@@ -15,6 +15,7 @@ namespace drones_api
 {
     public class Startup
     {
+        readonly string AllowedOriginSpecifications = "AllowOrigin";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +26,16 @@ namespace drones_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // add cors to service
+            services.AddCors(c =>
+            {
+                c.AddPolicy(name: AllowedOriginSpecifications, options => options
+                .SetIsOriginAllowed(_ => true)
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            });
+
             services.AddControllers();
         }
 
@@ -39,6 +50,8 @@ namespace drones_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(AllowedOriginSpecifications);
 
             app.UseAuthorization();
 
