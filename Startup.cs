@@ -36,7 +36,37 @@ namespace drones_api
                 .AllowAnyMethod());
             });
 
+            // add compression to response
+            services.AddResponseCompression();
+
             services.AddControllers();
+
+            // Configure Api version
+            services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.ReportApiVersions = true;
+                options.ApiVersionReader = ApiVersionReader.Combine(
+                    new QueryStringApiVersionReader("api-version"),
+                    new HeaderApiVersionReader("api-version")
+                   );
+            });
+
+            // versioning explorer
+            services.AddVersionedApiExplorer(options =>
+            {
+                // add the versioned api explorer, which also adds IApiVersionDescriptionProvider service
+                // note: the specified format code will format the version as "'v'major[.minor][-status]"
+                options.GroupNameFormat = "'v'VVV";
+
+                // note: this option is only necessary when versioning by url segment. the SubstitutionFormat
+                // can also be used to control the format of the API version in route templates
+                options.SubstituteApiVersionInUrl = true;
+            });
+
+            services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
+            services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefaultValues>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
