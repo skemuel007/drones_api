@@ -44,6 +44,16 @@ namespace drones_api
             // add compression to response
             services.AddResponseCompression();
 
+            // enable api health check
+            services.AddHealthChecks();
+
+            // configure response for web api
+            services.AddControllers().AddNewtonsoftJson(
+                opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
             services.AddControllers();
 
             // Configure Api version
@@ -72,6 +82,29 @@ namespace drones_api
 
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen(options => options.OperationFilter<SwaggerDefaultValues>());
+
+            // format global json message response
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    var errors = actionContext.ModelState.Where(e =>
+                       e.Value.Errors.Count > 0
+                       ).Select(e => new
+                       {
+                           Error = e.Value.Errors.First().ErrorMessage,
+                       }).ToArray();
+
+                    return new BadRequestObjectResult(new
+                    {
+                        Status = false,
+                        Message = errors,
+                        Data = new { }
+                    });
+                };
+            });
+
+            services.AddOptions();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,6 +126,8 @@ namespace drones_api
                         options.SwaggerEndpoint($"{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
                     }
                 });
+
+            app.UseMiddleware<GlobalErrorHandler>();
 
             app.UseRouting();
 
