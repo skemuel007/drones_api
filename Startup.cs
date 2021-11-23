@@ -15,6 +15,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using drones_api.Data;
 
 namespace drones_api
 {
@@ -105,6 +107,9 @@ namespace drones_api
             });
 
             services.AddOptions();
+
+            services.AddDbContext<DronesApiContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
