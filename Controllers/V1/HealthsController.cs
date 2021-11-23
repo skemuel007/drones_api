@@ -16,9 +16,9 @@ namespace drones_api.Controllers.V1
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class HealthController : ControllerBase
+    public class HealthsController : ControllerBase
     {
-        private readonly ILogger<HealthController> _logger;
+        private readonly ILogger<HealthsController> _logger;
         private readonly HealthCheckService _healthCheckService;
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace drones_api.Controllers.V1
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="healthCheckService"></param>
-        public HealthController(ILogger<HealthController> logger,
+        public HealthsController(ILogger<HealthsController> logger,
             HealthCheckService healthCheckService)
         {
             _healthCheckService = healthCheckService;
