@@ -69,6 +69,9 @@ namespace drones_api
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
+            // configure strongly typed settings for cloudinary
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             // configure service for file upload
             services.Configure<FormOptions>(f =>
             {

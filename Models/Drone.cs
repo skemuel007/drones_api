@@ -11,6 +11,7 @@ namespace drones_api.Models
     {
         [Key]
         public Guid DroneId { get; set; }
+        [MaxLength(100, ErrorMessage = "Serial number cannot be more than 100 characters in length")]
         public string SerialNumber { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal WeightLimit { get; set; }
@@ -21,5 +22,6 @@ namespace drones_api.Models
         public virtual DroneModel DroneModel { get; set; }
         public Guid DroneStateId { get; set; }
         public virtual DroneState DroneState { get; set; }
+        public virtual ICollection<DroneMedication> DroneMedications {get; set;}
     }
 }
