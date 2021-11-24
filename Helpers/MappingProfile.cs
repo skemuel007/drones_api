@@ -13,7 +13,9 @@ namespace drones_api.Helpers
         public MappingProfile()
         {
             CreateMap<DroneModelCreateDto, DroneModel>();
+            CreateMap<DroneStateCreateDto, DroneState>();
             CreateMap<DroneModelUpdateDto, DroneModel>();
+            CreateMap<DroneStateUpdateDto, DroneState>();
         }
     }
 }

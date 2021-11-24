@@ -13,6 +13,7 @@ namespace drones_api.Models
         [Required]
         [MaxLength(150)]
         public string StateTitle { get; set; }
+        public string Status { get; set; } = "Active";
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
     }

@@ -8,5 +8,6 @@ namespace drones_api.Services.Contracts
     public interface IRepositoryManager
     {
         IDroneModelRepository DroneModel { get; }
+        IDroneStateRepository DroneState { get;  }
     }
 }

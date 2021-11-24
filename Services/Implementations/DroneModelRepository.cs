@@ -1,5 +1,7 @@
 ﻿using drones_api.Data;
+using drones_api.Dtos.Request;
 using drones_api.Models;
+using drones_api.Paging;
 using drones_api.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,6 +14,47 @@ namespace drones_api.Services.Implementations
     public class DroneModelRepository : RepositoryBase<DroneModel>, IDroneModelRepository
     {
         public DroneModelRepository(DronesApiContext context) : base(context) { }
+
+        public async Task<PagedList<DroneModel>> GetDroneModelsPagedAsync(DroneModelParameters droneModelParameters, bool trackChanges)
+        {
+            var query = FindAll(trackChanges)
+                .AsQueryable();
+
+            if ( !string.IsNullOrEmpty(droneModelParameters.Filter))
+            {
+                query = droneModelParameters.Filter.ToLower() switch
+                {
+                    "active" => query.Where(d => d.Status.ToLower() == "active"),
+                    "disable" => query.Where(d => d.Status.ToLower() == "disable"),
+                    _ => query
+                };
+            }
+
+            if ( !string.IsNullOrEmpty(droneModelParameters.OrderBy))
+            {
+                query = droneModelParameters.OrderBy.ToLower() switch
+                {
+                    "dronemodelid" => droneModelParameters.DescendingOrder ? query.OrderByDescending(d => d.DroneModelId) : query.OrderBy(d => d.DroneModelId),
+                    "createdat" => droneModelParameters.DescendingOrder ? query.OrderByDescending(d => d.CreatedAt) : query.OrderBy(d => d.CreatedAt),
+                    "updatedat" => droneModelParameters.DescendingOrder ? query.OrderByDescending(d => d.UpdatedAt) : query.OrderBy(d => d.UpdatedAt),
+                    "name" => droneModelParameters.DescendingOrder ? query.OrderByDescending(d => d.ModelName) : query.OrderBy(d => d.ModelName),
+                    "modelName" => droneModelParameters.DescendingOrder ? query.OrderByDescending(d => d.ModelName) : query.OrderBy(d => d.ModelName),
+                    _ => query
+                };
+            }
+
+            if ( !string.IsNullOrEmpty(droneModelParameters.SearchTerm))
+            {
+                var lowerCaseTerm = droneModelParameters.SearchTerm.Trim().ToLower();
+
+                query = query.Where(d => d.ModelName.ToLower().Contains(lowerCaseTerm));
+            }
+
+            var droneModels = await query.ToListAsync();
+
+            return PagedList<DroneModel>
+                .ToPagedList(droneModels, droneModelParameters.PageNumber, droneModelParameters.PageSize);
+        }
 
         /// <summary>
         /// Check if the drone model exists
