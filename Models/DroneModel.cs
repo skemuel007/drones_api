@@ -11,7 +11,7 @@ namespace drones_api.Models
         [Key]
         public Guid DroneModelId { get; set; }
         [Required]
-        [MaxLength(150)]
+        [MaxLength(90)]
         public string ModelName { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
