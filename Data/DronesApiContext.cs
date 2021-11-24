@@ -36,6 +36,14 @@ namespace drones_api.Data
                 .HasIndex(d => d.SerialNumber)
                 .IsUnique();
 
+            modelBuilder.Entity<Drone>()
+                .HasIndex(d => d.DroneModelId)
+                .IsUnique(unique: false);
+
+            modelBuilder.Entity<Drone>()
+                .HasIndex(d => d.DroneStateId)
+                .IsUnique(unique: false);
+
             modelBuilder.Entity<DroneState>()
                 .HasIndex(d => d.StateTitle)
                 .IsUnique();
