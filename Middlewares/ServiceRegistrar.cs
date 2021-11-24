@@ -14,6 +14,7 @@ namespace drones_api.Middlewares
         {
             base.Load(builder);
             builder.RegisterType<RepositoryManager>().As<IRepositoryManager>();
+            builder.RegisterType<PhotoRepository>().As<IPhotoRepository>();
             /*builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AsImplementedInterfaces();*/
         }

@@ -18,12 +18,12 @@ namespace drones_api.Controllers.V1
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class DroneModelController : ControllerBase
+    public class DroneStateController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
 
-        public DroneModelController(IRepositoryManager repository,
+        public DroneStateController(IRepositoryManager repository,
             IMapper mapper)
         {
             _repository = repository;
@@ -31,18 +31,18 @@ namespace drones_api.Controllers.V1
         }
 
         /// <summary>
-        /// Gets a page list of drone models
+        /// Gets a page list of drone states
         /// </summary>
-        /// <param name="droneModelParameters"></param>
-        /// <returns>Returns a paged list of drone models</returns>
+        /// <param name="droneStateParameters"></param>
+        /// <returns>Returns a paged list of drone states</returns>
         /// <returns code="200">Successful</returns>
         /// <returns code="422">Validation error</returns>
         /// <returns code="500">Internal server error</returns>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<ICollection<DroneModel>>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<ICollection<DroneState>>))]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
-        public async Task<IActionResult> GetDroneModels([FromQuery] DroneModelParameters droneModelParameters)
+        public async Task<IActionResult> GetDroneStates([FromQuery] DroneStateParameters droneStateParameters)
         {
             if (!ModelState.IsValid)
             {
@@ -53,124 +53,73 @@ namespace drones_api.Controllers.V1
                     Data = new { }
                 });
             }
-            var droneModels = await _repository.DroneModel.GetDroneModelsPagedAsync(droneModelParameters, trackChanges: false);
+            var droneStates = await _repository.DroneState.GetDroneStatesPagedAsync(droneStateParameters, trackChanges: false);
 
             return Ok(new
             {
-                Status = (droneModels.Count > 0) ? true : false,
-                Meta = droneModels.PagedResponse,
-                Message = (droneModels.Count > 0) ? "Drone models found" : "No drone models found",
-                Data = droneModels
+                Status = (droneStates.Count > 0) ? true : false,
+                Meta = droneStates.PagedResponse,
+                Message = (droneStates.Count > 0) ? "Drone states found" : "No drone states found",
+                Data = droneStates
             });
         }
 
         /// <summary>
-        /// Gets the drone model
+        /// Gets the drone state
         /// </summary>
-        /// <param name="droneModelId"></param>
-        /// <returns>A drone model record by its Guid</returns>
-        /// <returns code="200">Ok - Drone model record found</returns>
-        /// <returns code="404">Not found - No such drone model</returns>
+        /// <param name="droneStateId"></param>
+        /// <returns>A drone state record by its Guid</returns>
+        /// <returns code="200">Ok - Drone state record found</returns>
+        /// <returns code="404">Not found - No such drone state</returns>
         /// <returns code="500">Internal server error</returns>
-        [HttpGet("{droneModelId}", Name = "GetDroneModel")]
+        [HttpGet("{droneStateId}", Name = "GetDroneState")]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<Object>))]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<DroneModel>))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<DroneState>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<Object>))]
-        public async Task<IActionResult> GetDroneModel(Guid droneModelId)
+        public async Task<IActionResult> GetDroneState(Guid droneStateId)
         {
             // check if drone model exists
-            var exists = await _repository.DroneModel.CheckDroneModelExists(droneModelId);
+            var exists = await _repository.DroneState.CheckDroneStateExists(droneStateId);
 
-            if ( !exists)
+            if (!exists)
             {
                 return NotFound(new
                 {
                     Status = false,
-                    Message = "No such drone model",
+                    Message = "No such drone state",
                     Data = new { }
                 });
             }
 
             // get the drone model
-            var droneModel = await _repository.DroneModel.GetDroneModelAsync(droneModelId: droneModelId, trackChanges: false);
+            var droneState = await _repository.DroneState.GetDroneStateAsync(droneStateId: droneStateId, trackChanges: false);
 
             return Ok(new
             {
                 Status = true,
-                Message = "Drone model record found",
-                Data = droneModel
+                Message = "Drone state record found",
+                Data = droneState
             });
 
         }
 
         /// <summary>
-        /// Creates a new drone model
+        /// Creates a new drone state
         /// </summary>
-        /// <param name="droneModelcreateDto"></param>
-        /// <returns>Created drone model</returns>
+        /// <param name="droneStateCreateDto"></param>
+        /// <returns>Created drone state</returns>
         /// <returns code="201">Created successfully</returns>
         /// <returns code="422">Validation error</returns>
         /// <returns code="400">Bad request - No payload sent</returns>
         /// <returns code="500">Internal server error - Error while adding to database</returns>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ApiResponse<DroneModel>))]
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(ApiResponse<DroneState>))]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
-        public IActionResult AddDroneModel([FromBody] DroneModelCreateDto droneModelcreateDto)
+        public IActionResult AddDroneState([FromBody] DroneStateCreateDto droneStateCreateDto)
         {
-            if ( droneModelcreateDto == null )
-            {
-                // todo serilog error
-                return BadRequest(new
-                {
-                    Status = false,
-                    Message = "Drone model object is null",
-                    Data = new { }
-                });
-            }
-
-            if ( !ModelState.IsValid )
-            {
-                // Todo - serilog error
-                return UnprocessableEntity(new
-                {
-                    Status = false,
-                    Message = ModelState,
-                    Data = new { }
-                });
-            }
-
-            var droneModelEntity = _mapper.Map<DroneModel>(droneModelcreateDto);
-
-            var createdDroneModel = _repository.DroneModel.AddDroneModel(droneModelEntity);
-
-            return StatusCode(StatusCodes.Status201Created, new
-            {
-                Status = true,
-                Message = "New drone model created",
-                Data = createdDroneModel
-            });
-        }
-
-        /// <summary>
-        /// Update a drone model
-        /// </summary>
-        /// <param name="droneModelId"></param>
-        /// <param name="droneModelUpdateDto"></param>
-        /// <returns>Updated drone message</returns>
-        /// <returns code="200">Update successfully</returns>
-        /// <returns code="422">Validation error</returns>
-        /// <returns code="400">Bad request - No payload sent</returns>
-        /// <returns code="500">Internal server error - Error while adding to database</returns>
-        [HttpPut("{droneModelId}")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<object>))]
-        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
-        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<object>))]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
-        public async Task<IActionResult> UpdateDroneModel(Guid droneModelId, [FromBody] DroneModelUpdateDto droneModelUpdateDto)
-        {
-            if (droneModelUpdateDto == null)
+            if (droneStateCreateDto == null)
             {
                 // todo serilog error
                 return BadRequest(new
@@ -192,26 +141,77 @@ namespace drones_api.Controllers.V1
                 });
             }
 
-            var droneModelEntity = await _repository.DroneModel.GetDroneModelAsync(droneModelId: droneModelId, trackChanges: false);
+            var droneStateEntity = _mapper.Map<DroneState>(droneStateCreateDto);
 
-            if ( droneModelEntity == null )
+            var createdModelState = _repository.DroneState.AddDroneState(droneStateEntity);
+
+            return StatusCode(StatusCodes.Status201Created, new
             {
-                return NotFound(new
+                Status = true,
+                Message = "New drone state created",
+                Data = createdModelState
+            });
+        }
+
+        /// <summary>
+        /// Update a drone state
+        /// </summary>
+        /// <param name="droneStateId"></param>
+        /// <param name="droneStateUpdateDto"></param>
+        /// <returns>Updated drone message</returns>
+        /// <returns code="200">Update successfully</returns>
+        /// <returns code="422">Validation error</returns>
+        /// <returns code="400">Bad request - No payload sent</returns>
+        /// <returns code="500">Internal server error - Error while adding to database</returns>
+        [HttpPut("{droneStateId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
+        public async Task<IActionResult> UpdateDroneState(Guid droneStateId, [FromBody] DroneStateUpdateDto droneStateUpdateDto)
+        {
+            if (droneStateUpdateDto == null)
+            {
+                // todo serilog error
+                return BadRequest(new
                 {
                     Status = false,
-                    Message = $"Drone model with id: {droneModelId}, was not found",
+                    Message = "Drone state object is null",
                     Data = new { }
                 });
             }
 
-            _mapper.Map(droneModelUpdateDto, droneModelEntity);
-            
-            if (_repository.DroneModel.UpdateDroneModel(droneModelEntity))
+            if (!ModelState.IsValid)
+            {
+                // Todo - serilog error
+                return UnprocessableEntity(new
+                {
+                    Status = false,
+                    Message = ModelState,
+                    Data = new { }
+                });
+            }
+
+            var droneStateEntity = await _repository.DroneState.GetDroneStateAsync(droneStateId: droneStateId, trackChanges: false);
+
+            if (droneStateEntity == null)
+            {
+                return NotFound(new
+                {
+                    Status = false,
+                    Message = $"Drone state with id: {droneStateId}, was not found",
+                    Data = new { }
+                });
+            }
+
+            _mapper.Map(droneStateUpdateDto, droneStateEntity);
+
+            if (_repository.DroneState.UpdateDroneState(droneStateEntity))
             {
                 return Ok(new
                 {
                     Status = true,
-                    Message = $"Drone mode {droneModelId} updated successfully",
+                    Message = $"Drone mode {droneStateId} updated successfully",
                     Data = new { }
                 });
             }
@@ -219,52 +219,52 @@ namespace drones_api.Controllers.V1
             return StatusCode(StatusCodes.Status500InternalServerError, new
             {
                 Status = false,
-                Message = $"An error occured while updating drone model {droneModelId}, please try again later",
+                Message = $"An error occured while updating drone model {droneStateId}, please try again later",
                 Data = new { }
             });
         }
 
         /// <summary>
-        /// Deletes a drone model
+        /// Deletes a drone state
         /// </summary>
-        /// <param name="droneModelId"></param>
-        /// <returns>Success - drone model deleted</returns>
-        /// <returns code="200">Drone model successfully deleted</returns>
-        /// <returns code="404">Drone model not found</returns>
-        /// <returns code="500">Internal server error - something went wrong deleting drone model record</returns>
-        [HttpDelete("{droneModelId}")]
+        /// <param name="droneStateId"></param>
+        /// <returns>Success - drone state deleted</returns>
+        /// <returns code="200">Drone state successfully deleted</returns>
+        /// <returns code="404">Drone state not found</returns>
+        /// <returns code="500">Internal server error - something went wrong deleting drone state record</returns>
+        [HttpDelete("{droneStateId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
-        public async Task<IActionResult> DeleteDroneModel(Guid droneModelId)
+        public async Task<IActionResult> DeleteDroneModel(Guid droneStateId)
         {
-            var droneModel = await _repository.DroneModel.GetDroneModelAsync(droneModelId, false);
+            var droneState = await _repository.DroneState.GetDroneStateAsync(droneStateId, false);
 
-            if ( droneModel == null )
+            if (droneState == null)
             {
                 // log error
                 return NotFound(new
                 {
                     Status = false,
-                    Message = $"Drone model with id: {droneModelId}, was not found",
+                    Message = $"Drone state with id: {droneStateId}, was not found",
                     Data = new { }
                 });
             }
 
-            var isDeleted = _repository.DroneModel.DeleteDroneModel(droneModel);
+            var isDeleted = _repository.DroneState.DeleteDroneState(droneState);
 
             if (isDeleted)
                 return Ok(new
                 {
                     Status = true,
-                    Message = $"Drone model ${droneModelId} deleted",
-                    Data = new {}
+                    Message = $"Drone state ${droneStateId} deleted",
+                    Data = new { }
                 });
 
             return StatusCode(statusCode: StatusCodes.Status500InternalServerError, value: new
             {
                 Status = false,
-                Message = $"Something went wrong while deleting drone model {droneModelId}.",
+                Message = $"Something went wrong while deleting drone state {droneStateId}.",
                 Data = new { }
             });
         }

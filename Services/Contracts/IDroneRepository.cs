@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace drones_api.Services.Contracts
 {
-    public interface IRepositoryManager
+    public interface IDroneRepository
     {
-        IDroneModelRepository DroneModel { get; }
-        IDroneStateRepository DroneState { get;  }
     }
 }
