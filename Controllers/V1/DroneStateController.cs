@@ -98,7 +98,7 @@ namespace drones_api.Controllers.V1
             {
                 Status = true,
                 Message = "Drone state record found",
-                Data = droneStateId
+                Data = droneState
             });
 
         }

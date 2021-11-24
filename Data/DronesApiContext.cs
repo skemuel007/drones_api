@@ -23,10 +23,26 @@ namespace drones_api.Data
             modelBuilder.Entity<DroneModel>()
                 .HasIndex(d => d.ModelName)
                 .IsUnique();
+
+            modelBuilder.Entity<Medication>()
+                .HasIndex(m => m.Code)
+                .IsUnique();
+
+            modelBuilder.Entity<Drone>()
+                .HasIndex(d => d.SerialNumber)
+                .IsUnique();
+
+            modelBuilder.Entity<DroneState>()
+                .HasIndex(d => d.StateTitle)
+                .IsUnique();
+
+            // modelBuilder.Entity<Drone>().Property(d => d.WeightLimit).HasColumnType("decimal(18,2)");
         }
 
         public virtual DbSet<DroneModel> DroneModels { get; set; }
         public virtual DbSet<DroneState> DroneStates { get; set; }
+        public virtual DbSet<Drone> Drones { get; set; }
+        public virtual DbSet<Medication> Medications { get; set; }
         
     }
 }

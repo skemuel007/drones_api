@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using drones_api.Data;
 
 namespace drones_api.Migrations
 {
     [DbContext(typeof(DronesApiContext))]
-    partial class DronesApiContextModelSnapshot : ModelSnapshot
+    [Migration("20211124093030_DroneMigration")]
+    partial class DroneMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,12 +33,6 @@ namespace drones_api.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("DroneModelId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("DroneStateId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("SerialNumber")
                         .HasColumnType("nvarchar(450)");
 
@@ -47,12 +43,6 @@ namespace drones_api.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("DroneId");
-
-                    b.HasIndex("DroneModelId")
-                        .IsUnique();
-
-                    b.HasIndex("DroneStateId")
-                        .IsUnique();
 
                     b.HasIndex("SerialNumber")
                         .IsUnique()
@@ -91,35 +81,35 @@ namespace drones_api.Migrations
                     b.HasData(
                         new
                         {
-                            DroneModelId = new Guid("68679bc6-04a1-4b83-a477-e13c77da04d7"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 267, DateTimeKind.Local).AddTicks(9105),
+                            DroneModelId = new Guid("8af14faf-d8d9-4ab6-9281-dacb4ae340ef"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 73, DateTimeKind.Local).AddTicks(2259),
                             ModelName = "Lightweight",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6138)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 73, DateTimeKind.Local).AddTicks(9610)
                         },
                         new
                         {
-                            DroneModelId = new Guid("b23f8368-a938-43f2-b803-0306e99927f5"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6617),
+                            DroneModelId = new Guid("91d7c4cd-1b96-4546-abcf-b8e086b26995"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 74, DateTimeKind.Local).AddTicks(109),
                             ModelName = "MiddleWeight",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6629)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 74, DateTimeKind.Local).AddTicks(119)
                         },
                         new
                         {
-                            DroneModelId = new Guid("a353826a-b57f-4675-990f-b76038652cd4"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6637),
+                            DroneModelId = new Guid("8f4f64b0-b0e8-4e96-a555-7eac8ba66505"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 74, DateTimeKind.Local).AddTicks(127),
                             ModelName = "Cruiserweight",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6638)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 74, DateTimeKind.Local).AddTicks(128)
                         },
                         new
                         {
-                            DroneModelId = new Guid("79fe7bc1-fafb-4e29-8712-d94b79859648"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6640),
+                            DroneModelId = new Guid("1daa4db5-0ce9-4cb3-9388-fd4317cb3904"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 74, DateTimeKind.Local).AddTicks(130),
                             ModelName = "Heavyweight",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 268, DateTimeKind.Local).AddTicks(6641)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 74, DateTimeKind.Local).AddTicks(131)
                         });
                 });
 
@@ -153,51 +143,51 @@ namespace drones_api.Migrations
                     b.HasData(
                         new
                         {
-                            DroneStateId = new Guid("90e682ba-1235-4085-8030-95a672d66660"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 269, DateTimeKind.Local).AddTicks(9679),
+                            DroneStateId = new Guid("b5b6a5cd-ebc0-434d-a1a6-38556840948f"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(3901),
                             StateTitle = "IDLE",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 269, DateTimeKind.Local).AddTicks(9942)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4376)
                         },
                         new
                         {
-                            DroneStateId = new Guid("ca9ef137-8da4-4aed-a03b-93b822a072e4"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(245),
+                            DroneStateId = new Guid("a9715d4a-6ebd-450b-b55b-751a9faadd00"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4727),
                             StateTitle = "LOADING",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(260)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4742)
                         },
                         new
                         {
-                            DroneStateId = new Guid("d3010830-781c-4a6e-8122-a166d69f530b"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(269),
+                            DroneStateId = new Guid("cc19ad1e-7fd1-4094-9bef-ee9d7d5d7360"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4753),
                             StateTitle = "LOADED",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(271)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4754)
                         },
                         new
                         {
-                            DroneStateId = new Guid("2837a202-0753-415f-9554-3e86d6f55609"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(272),
+                            DroneStateId = new Guid("2035fb8d-f31c-4225-be3a-b250fb704fb9"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4756),
                             StateTitle = "DELIVERING",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(273)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4757)
                         },
                         new
                         {
-                            DroneStateId = new Guid("3304ae56-2bf6-4873-bfe7-74c9c9b20e4c"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(275),
+                            DroneStateId = new Guid("0c00ee4e-b6f7-4fe7-94ed-ed5abd2a73d3"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4758),
                             StateTitle = "DELIVERED",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(276)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4759)
                         },
                         new
                         {
-                            DroneStateId = new Guid("b541c479-dcdf-4791-b307-22c4357e33dd"),
-                            CreatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(278),
+                            DroneStateId = new Guid("a9588e8b-486f-45f1-bb83-d02bee9a2d3b"),
+                            CreatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4761),
                             StateTitle = "RETURNING",
                             Status = "Active",
-                            UpdatedAt = new DateTime(2021, 11, 24, 10, 56, 46, 270, DateTimeKind.Local).AddTicks(279)
+                            UpdatedAt = new DateTime(2021, 11, 24, 10, 30, 30, 75, DateTimeKind.Local).AddTicks(4762)
                         });
                 });
 
@@ -231,22 +221,7 @@ namespace drones_api.Migrations
                         .IsUnique()
                         .HasFilter("[Code] IS NOT NULL");
 
-                    b.ToTable("Medications");
-                });
-
-            modelBuilder.Entity("drones_api.Models.Drone", b =>
-                {
-                    b.HasOne("drones_api.Models.DroneModel", "DroneModel")
-                        .WithOne("Drone")
-                        .HasForeignKey("drones_api.Models.Drone", "DroneModelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("drones_api.Models.DroneState", "DroneState")
-                        .WithOne("Drone")
-                        .HasForeignKey("drones_api.Models.Drone", "DroneStateId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("Medication");
                 });
 #pragma warning restore 612, 618
         }

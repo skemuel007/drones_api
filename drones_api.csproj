@@ -13,6 +13,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
+	  
+	
+  <ItemGroup>
+    <Compile Remove="Migrations\20211124091348_DroneMigration.cs" />
+    <Compile Remove="Migrations\20211124091348_DroneMigration.Designer.cs" />
+    <Compile Remove="Migrations\20211124092717_DroneMigration.cs" />
+    <Compile Remove="Migrations\20211124092717_DroneMigration.Designer.cs" />
+    <Compile Remove="Migrations\20211124092912_DroneMigration.cs" />
+    <Compile Remove="Migrations\20211124092912_DroneMigration.Designer.cs" />
+  </ItemGroup>
 	
 
   <ItemGroup>
