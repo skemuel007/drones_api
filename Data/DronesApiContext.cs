@@ -18,6 +18,11 @@ namespace drones_api.Data
         {
             modelBuilder.ApplyConfiguration(new DroneModelConfiguration());
             modelBuilder.ApplyConfiguration(new DroneStateConfiguration());
+
+            // make model name unique
+            modelBuilder.Entity<DroneModel>()
+                .HasIndex(d => d.ModelName)
+                .IsUnique();
         }
 
         public virtual DbSet<DroneModel> DroneModels { get; set; }

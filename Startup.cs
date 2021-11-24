@@ -17,6 +17,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using drones_api.Data;
+using Autofac;
+using drones_api.Helpers;
+using Microsoft.AspNetCore.Http.Features;
+using Autofac.Extensions.DependencyInjection;
 
 namespace drones_api
 {
@@ -29,6 +33,7 @@ namespace drones_api
         }
 
         public IConfiguration Configuration { get; }
+        public ILifetimeScope AutofacContainer { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -46,8 +51,12 @@ namespace drones_api
             // add compression to response
             services.AddResponseCompression();
 
+            // register auto mapper
+            services.AddAutoMapper(typeof(Startup));
+
             // enable api health check
             services.AddHealthChecks();
+            services.AddHttpContextAccessor();
 
             // configure response for web api
             services.AddControllers().AddNewtonsoftJson(
@@ -56,7 +65,17 @@ namespace drones_api
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            services.AddControllers();
+            // configure strongly typed values for appsettings
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure service for file upload
+            services.Configure<FormOptions>(f =>
+            {
+                f.ValueLengthLimit = int.MaxValue;
+                f.MultipartBodyLengthLimit = int.MaxValue; // change to defined upload value
+                //f.MemoryBufferThreshold = int.MaxValue;
+            });
 
             // Configure Api version
             services.AddApiVersioning(options =>
@@ -111,6 +130,10 @@ namespace drones_api
             services.AddDbContext<DronesApiContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
         }
+        public void ConfigureContainer(ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterModule(new ServiceRegistrar());
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
@@ -119,6 +142,8 @@ namespace drones_api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
 
             app.UseSwagger();
             app.UseSwaggerUI(
