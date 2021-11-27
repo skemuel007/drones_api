@@ -9,5 +9,8 @@ namespace drones_api.Services.Contracts
     {
         IDroneModelRepository DroneModel { get; }
         IDroneStateRepository DroneState { get;  }
+        IDroneRepository Drone { get;  }
+        IDroneMedicationRepository DroneMedication { get; }
+        IMedicationRepository Medication { get;  }
     }
 }

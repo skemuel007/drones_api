@@ -1,5 +1,6 @@
 ﻿using drones_api.Data;
 using drones_api.Dtos.Request;
+using drones_api.Dtos.Response;
 using drones_api.Models;
 using drones_api.Paging;
 using drones_api.Services.Contracts;
@@ -111,6 +112,16 @@ namespace drones_api.Services.Implementations
             return SaveChanges();
         }
 
+        public async Task<DroneStateGuidDto> GetIDleDroneState(bool trackChanges)
+        {
+            var doneStateId = await FindByCondition(d => d.StateTitle.ToLower() == "idle", trackChanges)
+                .Select(d => new DroneStateGuidDto
+                {
+                    DroneStateId = d.DroneStateId
+                }).FirstOrDefaultAsync();
+
+            return doneStateId;
+        }
 
     }
 }

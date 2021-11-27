@@ -1,0 +1,35 @@
+﻿version: '3.4'
+
+services:
+  droneapi:
+    image: droneapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5006:5006"
+    depends_on:
+      - migrations
+      - db
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Password@123"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "14331:1433"
+    depends_on:
+      - migrations
+  serilog:
+    image: datalust/seq:latest
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+    ports:
+      - "5341:80"
+    depends_on:
+      - migrations
+  migrations:
+    build:
+      context: .
+      dockerfile: Migrations.Dockerfile

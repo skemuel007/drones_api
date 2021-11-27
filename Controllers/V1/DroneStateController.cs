@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using drones_api.Dtos.Request;
 using drones_api.Dtos.Response;
+using drones_api.Middlewares;
 using drones_api.Models;
 using drones_api.Services.Contracts;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +24,14 @@ namespace drones_api.Controllers.V1
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly IMemoryCache _memoryCache;
 
         public DroneStateController(IRepositoryManager repository,
+            IMemoryCache memoryCache,
             IMapper mapper)
         {
             _repository = repository;
+            _memoryCache = memoryCache;
             _mapper = mapper;
         }
 
@@ -42,6 +47,9 @@ namespace drones_api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<ICollection<DroneState>>))]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
+        [RateLimitDecorator(StrategyType = StrategyTypeEnum.IpAddress)]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "OrderBy", "SearchTerm", "Filter", "DescendingOrder" })] 
+        // https://dale-bingham-soteriasoftware.medium.com/adding-response-caching-to-your-net-core-web-apis-quickly-3b09611ae4f5
         public async Task<IActionResult> GetDroneStates([FromQuery] DroneStateParameters droneStateParameters)
         {
             if (!ModelState.IsValid)
@@ -76,6 +84,7 @@ namespace drones_api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<Object>))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<DroneState>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<Object>))]
+        [RateLimitDecorator(StrategyType = StrategyTypeEnum.IpAddress)]
         public async Task<IActionResult> GetDroneState(Guid droneStateId)
         {
             // check if drone model exists
@@ -91,8 +100,22 @@ namespace drones_api.Controllers.V1
                 });
             }
 
-            // get the drone model
-            var droneState = await _repository.DroneState.GetDroneStateAsync(droneStateId: droneStateId, trackChanges: false);
+            // cache memory
+            var cacheKey = "droneStateDetail";
+            if (!_memoryCache.TryGetValue(cacheKey, out DroneState droneState))
+            {
+                // get the drone model
+                droneState = await _repository.DroneState.GetDroneStateAsync(droneStateId: droneStateId, trackChanges: false);
+                var cacheExpiryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpiration = DateTime.Now.AddMinutes(5),
+                    Priority = CacheItemPriority.High,
+                    SlidingExpiration = TimeSpan.FromMinutes(2)
+                };
+                _memoryCache.Set(cacheKey, droneState, cacheExpiryOptions);
+            }
+
+           
 
             return Ok(new
             {

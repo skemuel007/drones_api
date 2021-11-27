@@ -16,6 +16,7 @@ namespace drones_api.Helpers
             CreateMap<DroneStateCreateDto, DroneState>();
             CreateMap<DroneModelUpdateDto, DroneModel>();
             CreateMap<DroneStateUpdateDto, DroneState>();
+            CreateMap<DroneCreateDto, Drone>();
         }
     }
 }

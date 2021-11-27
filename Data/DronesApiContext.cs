@@ -48,8 +48,8 @@ namespace drones_api.Data
                 .HasIndex(d => d.StateTitle)
                 .IsUnique();
 
-            modelBuilder.Entity<DroneMedication>()
-                .HasKey(dm => new { dm.DroneId, dm.MedicationId });
+            /*modelBuilder.Entity<DroneMedication>()
+                .HasKey(dm => new { dm.DroneId, dm.MedicationId });*/
 
             modelBuilder.Entity<DroneMedication>()
                 .HasOne(dm => dm.Drone)

@@ -21,6 +21,8 @@ using Autofac;
 using drones_api.Helpers;
 using Microsoft.AspNetCore.Http.Features;
 using Autofac.Extensions.DependencyInjection;
+using Hangfire;
+using drones_api.Services.Contracts;
 
 namespace drones_api
 {
@@ -57,6 +59,10 @@ namespace drones_api
             // enable api health check
             services.AddHealthChecks();
             services.AddHttpContextAccessor();
+
+            services.AddMemoryCache();
+
+            services.AddResponseCaching();
 
             // configure response for web api
             services.AddControllers().AddNewtonsoftJson(
@@ -132,6 +138,12 @@ namespace drones_api
 
             services.AddDbContext<DronesApiContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
+
+            services.AddHangfire(x =>
+            {
+                x.UseSqlServerStorage(Configuration.GetConnectionString("DronesApiContext"));
+            });
+            services.AddHangfireServer();
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
@@ -168,10 +180,19 @@ namespace drones_api
 
             app.UseAuthorization();
 
+            app.UseResponseCaching();
+            app.UseMiddleware<RateLimitMiddleware>();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHangfireDashboard("/jobs");
+
+            RecurringJob.AddOrUpdate<IDroneRepository>(
+                batteryLevelReport => batteryLevelReport.GetAllDroneBatteryLevels(), Cron.Daily);
+
         }
     }
 }
