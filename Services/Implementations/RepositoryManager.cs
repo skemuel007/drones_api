@@ -13,14 +13,27 @@ namespace drones_api.Services.Implementations
         private IDroneModelRepository _droneModelRepository;
         private IDroneStateRepository _droneStateRepository;
         private IDroneRepository _droneRepository;
-        private IDroneMedicationRepository _droneMedicationRepository;
         private IMedicationRepository _medicationRepository;
+        private IDroneRequestRepository _droneRequestRepository;
+        private IDroneItemRepository _droneItemRepository;
         
         public RepositoryManager(DronesApiContext context)
         {
             _repositoryContext = context;
         }
+        
+        public IDroneItemRepository DroneItem
+        {
+            get
+            {
+                if (_droneItemRepository == null )
+                {
+                    _droneItemRepository = new DroneItemRepository(_repositoryContext);
+                }
 
+                return _droneItemRepository;
+            }
+        }
         public IMedicationRepository Medication
         {
             get
@@ -34,16 +47,17 @@ namespace drones_api.Services.Implementations
 
             }
         }
-        public IDroneMedicationRepository DroneMedication
+
+        public IDroneRequestRepository DroneRequest
         {
             get
             {
-                if (_droneMedicationRepository == null)
+                if (_droneRequestRepository == null)
                 {
-                    _droneMedicationRepository = new DroneMedicationRepository(_repositoryContext);
+                    _droneRequestRepository = new DroneRequestRepository(_repositoryContext);
                 }
 
-                return _droneMedicationRepository;
+                return _droneRequestRepository;
 
             }
         }

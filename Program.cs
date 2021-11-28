@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Events;
+using Serilog.Formatting.Compact;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,10 @@ namespace drones_api
         {
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
-                .WriteTo.Console()
+                .WriteTo.Console(new RenderedCompactJsonFormatter(), restrictedToMinimumLevel: LogEventLevel.Information)
+                .WriteTo.Debug(outputTemplate: DateTime.Now.ToString())
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Seq("http://localhost:5341/")
                 .CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }

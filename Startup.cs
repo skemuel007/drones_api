@@ -23,6 +23,9 @@ using Microsoft.AspNetCore.Http.Features;
 using Autofac.Extensions.DependencyInjection;
 using Hangfire;
 using drones_api.Services.Contracts;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace drones_api
 {
@@ -60,9 +63,21 @@ namespace drones_api
             services.AddHealthChecks();
             services.AddHttpContextAccessor();
 
-            services.AddMemoryCache();
+            services.AddMemoryCache( options =>
+            {
+                options.SizeLimit = 1024;
+            }
+            );
 
-            services.AddResponseCaching();
+            services.AddResponseCaching( options =>
+            {
+                // Each response cannot be more than 1 KB 
+                options.MaximumBodySize = 1024;
+
+                // Case Sensitive Paths 
+                // Responses to be returned only if case sensitive paths match
+                options.UseCaseSensitivePaths = true;
+            });
 
             // configure response for web api
             services.AddControllers().AddNewtonsoftJson(
@@ -177,10 +192,10 @@ namespace drones_api
             app.UseRouting();
 
             app.UseCors(AllowedOriginSpecifications);
+            app.UseResponseCaching();
 
             app.UseAuthorization();
 
-            app.UseResponseCaching();
             app.UseMiddleware<RateLimitMiddleware>();
 
             app.UseEndpoints(endpoints =>
@@ -190,8 +205,8 @@ namespace drones_api
 
             app.UseHangfireDashboard("/jobs");
 
-            RecurringJob.AddOrUpdate<IDroneRepository>(
-                batteryLevelReport => batteryLevelReport.GetAllDroneBatteryLevels(), Cron.Daily);
+            RecurringJob.AddOrUpdate<ILogRepository>(
+                batteryLevelReport => batteryLevelReport.LogDroneBatteryLevel(), Cron.Hourly);
 
         }
     }

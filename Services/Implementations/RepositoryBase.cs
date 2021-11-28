@@ -11,7 +11,7 @@ namespace drones_api.Services.Implementations
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
-        private DronesApiContext DbContext;
+        protected DronesApiContext DbContext;
 
         public RepositoryBase(DronesApiContext context)
         {

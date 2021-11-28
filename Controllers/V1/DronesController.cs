@@ -12,6 +12,8 @@ using AutoMapper;
 using drones_api.Dtos.Response;
 using drones_api.Dtos.Request;
 using drones_api.Middlewares;
+using drones_api.Helpers;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace drones_api.Data
 {
@@ -24,12 +26,15 @@ namespace drones_api.Data
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly IMemoryCache _memoryCache;
 
         public DronesController(IRepositoryManager repository,
+            IMemoryCache memoryCache,
             IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
+            _memoryCache = memoryCache;
         }
 
         /// <summary>
@@ -45,7 +50,7 @@ namespace drones_api.Data
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
         [RateLimitDecorator(StrategyType = StrategyTypeEnum.IpAddress)]
-        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "OrderBy", "SearchTerm", "Filter", "DescendingOrder" })]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new string[] { "*" })]
         public async Task<IActionResult> GetDrones([FromQuery] DroneParameters droneParameters)
         {
             if (!ModelState.IsValid)
@@ -146,18 +151,7 @@ namespace drones_api.Data
                 });
             }
 
-            var droneStateExists = await _repository.DroneState.CheckDroneStateExists(droneCreateDto.DroneStateId);
             var dorneModelEixsts = await _repository.DroneModel.CheckDroneModelExists(droneCreateDto.DroneModelId);
-
-            if ( !droneStateExists )
-            {
-                NotFound(new
-                {
-                    Status = false,
-                    Message = $"State for drone is invalid",
-                    Data = new { }
-                });
-            }
 
             if (!dorneModelEixsts)
             {
@@ -171,6 +165,20 @@ namespace drones_api.Data
 
             var droneEntity = _mapper.Map<Drone>(droneCreateDto);
 
+            var cacheKey = "droneStateGuidData";
+            if (!_memoryCache.TryGetValue(cacheKey, out DroneStateGuidDto droneStateGuidDto))
+            {
+                // get the drone model
+                droneStateGuidDto = await _repository.DroneState.GetIDleDroneState(trackChanges: false);
+                var cacheExpiryOptions = new MemoryCacheEntryOptions
+                {
+                    AbsoluteExpiration = DateTime.Now.AddMinutes(5),
+                    Priority = CacheItemPriority.High,
+                    SlidingExpiration = TimeSpan.FromMinutes(2)
+                };
+                _memoryCache.Set(cacheKey, droneStateGuidDto, cacheExpiryOptions);
+            }
+
             var createdDrone = _repository.Drone.AddDrone(droneEntity);
 
             return StatusCode(StatusCodes.Status201Created, new
@@ -178,6 +186,192 @@ namespace drones_api.Data
                 Status = true,
                 Message = "New drone created",
                 Data = createdDrone
+            });
+        }
+
+        /// <summary>
+        /// Loads a drone with items
+        /// </summary>
+        /// <param name="loadDroneDto"></param>
+        /// <returns></returns>
+        [HttpPost("load")]
+        public async Task<IActionResult> LoadDroneWithMedicationItems([FromBody] LoadDroneDto loadDroneDto)
+        {
+            // validate model state
+            if ( !ModelState.IsValid)
+            {
+                return UnprocessableEntity(new
+                {
+                    Status = false,
+                    Message = ModelState,
+                    Data = new { }
+                });
+            }
+
+            // get drone by guid 
+            var drone = await _repository.Drone.GetDroneAsync(loadDroneDto.DroneId, false);
+
+            if ( drone == null )
+            {
+                return NotFound(new
+                {
+                    Status = false,
+                    Message = $"Drone with id {loadDroneDto.DroneId} not found",
+                    Data = new {}
+                });
+            }
+
+            // get drone weight limit
+            var droneWeightLimit = drone.WeightLimit;
+            // check the status of the drone
+            if ( drone.DroneState.StateTitle.ToLower() != "idle")
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = $"Drone cannot be loaded because drone is {drone.DroneState.StateTitle.FirstLetterToCaps()}",
+                    Data = new { }
+                });
+            }
+            // check the battery level
+            if (drone.BatterCapacity < 25)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = $"Drone cannot be loaded because drone is {drone.DroneState.StateTitle.FirstLetterToCaps()}",
+                    Data = new { }
+                });
+            }
+
+            var droneItems = loadDroneDto.Items;
+
+            decimal totalItemWeight = 0m;
+
+            // calculate drone weight to see if weight is greater than
+            foreach (var droneItem in droneItems)
+            {
+                totalItemWeight += droneItem.Weight * droneItem.Quantity;
+            }
+
+            if (totalItemWeight > droneWeightLimit)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = $"Total items weight of {totalItemWeight} exceeds drone weight limit of {droneWeightLimit}",
+                    Data = new { }
+                });
+            }
+
+
+            // create drone request
+            // begin transaction
+            var droneRequestTransaction = _repository.DroneRequest.BeginTransaction();
+
+            var droneRequest = _repository.DroneRequest.CreateDroneRequest(new DroneRequest
+            {
+                DroneId = drone.DroneId,
+                From = loadDroneDto.From,
+                To = loadDroneDto.To,
+                Status = "Loaded",
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+            });
+
+            
+            if ( droneRequest != null )
+            {
+                foreach (var item in droneItems)
+                {
+                    // add each item
+                    _repository.DroneItem.AddDroneItem(new DroneItem
+                    {
+                        CreatedAt = DateTime.Now,
+                        UpdatedAt = DateTime.Now,
+                        DroneRequestId = droneRequest.DroneRequestId,
+                        MedicationId = item.MedicationId,
+                        Quantity = item.Quantity,
+                        Weight = item.Weight
+                    });
+                }
+
+                _repository.DroneRequest.Commit(droneRequestTransaction);
+            }
+
+            // do update drone status - loading
+
+            var droneState = await _repository.DroneState.GetDroneStateByStateTitle("Loaded", false);
+            drone.DroneStateId = droneState.DroneStateId;
+            drone.UpdatedAt = DateTime.Now;
+
+            _repository.Drone.UpdateDrone(drone);
+            
+            return StatusCode(StatusCodes.Status201Created, new{
+                Status = true,
+                Message = $"Drone loaded"
+
+            });
+        }
+
+        /// <summary>
+        /// Updates drones details
+        /// </summary>
+        /// <param name="droneId"></param>
+        /// <param name="updateDroneDto"></param>
+        /// <returns></returns>
+        /// <returns code="200">Update successful</returns>
+        /// <returns code="404">Record not found</returns>
+        /// <returns code="422">Validation error</returns>
+        /// <returns code="500">Internal server</returns>
+        [HttpPut("{droneId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<object>))]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
+        public async Task<IActionResult> UpdateDrone(Guid droneId, [FromBody] UpdateDroneDto updateDroneDto)
+        {
+            // validate model state
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(new
+                {
+                    Status = false,
+                    Message = ModelState,
+                    Data = new { }
+                });
+            }
+
+            // get drone by guid 
+            var drone = await _repository.Drone.GetDroneAsync(droneId, false);
+
+            if (drone == null)
+            {
+                return NotFound(new
+                {
+                    Status = false,
+                    Message = $"Drone with id {droneId} not found",
+                    Data = new { }
+                });
+            }
+
+            _mapper.Map(updateDroneDto, drone);
+
+            if (_repository.Drone.UpdateDrone(drone))
+            {
+                return Ok(new
+                {
+                    Status = true,
+                    Message = $"Drone {droneId} updated successfully",
+                    Data = new { }
+                });
+            }
+
+            return StatusCode(StatusCodes.Status500InternalServerError, new
+            {
+                Status = false,
+                Message = $"An error occured while updating drone with Id, {droneId}, please try again later",
+                Data = new { }
             });
         }
     }

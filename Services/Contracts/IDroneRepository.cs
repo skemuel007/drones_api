@@ -1,4 +1,5 @@
 ﻿using drones_api.Dtos.Request;
+using drones_api.Dtos.Response;
 using drones_api.Models;
 using drones_api.Paging;
 using System;
@@ -15,6 +16,6 @@ namespace drones_api.Services.Contracts
         Task<Drone> GetDroneAsync(Guid droneId, bool trackChanges);
         Drone AddDrone(Drone drone);
         bool UpdateDrone(Drone drone);
-        void GetAllDroneBatteryLevels();
+        ICollection<BatteryLevelsDto> GetAllDroneBatteryLevels();
     }
 }

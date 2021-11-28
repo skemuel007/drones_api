@@ -66,6 +66,15 @@ namespace drones_api.Services.Implementations
             return exists;
         }
 
+        public async Task<DroneState> GetDroneStateByStateTitle(string stateTitle, bool trackChanges)
+        {
+            var droneState = await FindByCondition(d => d.StateTitle.ToLower() == stateTitle.ToLower(), trackChanges)
+                /*.Select(d => d.StateTitle)*/
+                .FirstOrDefaultAsync();
+
+            return droneState;
+        }
+
         /// <summary>
         /// Gets a single drone state with matching id
         /// </summary>

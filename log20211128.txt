@@ -1,0 +1,751 @@
+2021-11-28 20:19:47.500 +01:00 [INF] Start installing Hangfire SQL objects...
+2021-11-28 20:19:47.975 +01:00 [INF] Hangfire SQL objects installed.
+2021-11-28 20:19:48.056 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .\SQLEXPRESS@DronesDb'
+2021-11-28 20:19:48.061 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2021-11-28 20:19:48.067 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-11-28 20:19:48.478 +01:00 [INF] Server desktop-0s2aaav:39196:f54eb649 successfully announced in 360.8904 ms
+2021-11-28 20:19:48.490 +01:00 [INF] Server desktop-0s2aaav:39196:f54eb649 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-11-28 20:19:48.513 +01:00 [INF] 2 servers were removed due to timeout
+2021-11-28 20:19:48.661 +01:00 [INF] Server desktop-0s2aaav:39196:f54eb649 all the dispatchers started
+2021-11-28 20:19:48.814 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-28 20:19:48.819 +01:00 [INF] Hosting environment: Development
+2021-11-28 20:19:48.823 +01:00 [INF] Content root path: C:\Users\DELL\source\repos\drones_api
+2021-11-28 20:19:48.838 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/swagger/index.html  
+2021-11-28 20:19:49.016 +01:00 [INF] Request finished in 179.1798ms 200 text/html;charset=utf-8
+2021-11-28 20:19:49.172 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/swagger/v1/swagger.json  
+2021-11-28 20:19:49.325 +01:00 [INF] Request finished in 152.8821ms 200 application/json;charset=utf-8
+2021-11-28 20:19:59.000 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs  
+2021-11-28 20:19:59.040 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:19:59.145 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:19:59.151 +01:00 [INF] Request finished in 151.724ms 200 text/html
+2021-11-28 20:19:59.201 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/js17270  
+2021-11-28 20:19:59.206 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:19:59.253 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:19:59.260 +01:00 [INF] Request finished in 59.1815ms 200 application/javascript
+2021-11-28 20:19:59.265 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/fonts/glyphicons-halflings-regular/woff2  
+2021-11-28 20:19:59.272 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:19:59.278 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:19:59.284 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:19:59.288 +01:00 [INF] Request finished in 23.2182ms 200 font/woff2
+2021-11-28 20:20:01.383 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:20:01.388 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:01.422 +01:00 [INF] Request finished in 40.6493ms 200 application/json
+2021-11-28 20:20:03.440 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:20:03.446 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:03.459 +01:00 [INF] Request finished in 19.5082ms 200 application/json
+2021-11-28 20:20:05.477 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:20:05.482 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:05.493 +01:00 [INF] Request finished in 16.3861ms 200 application/json
+2021-11-28 20:20:07.508 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:20:07.514 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:07.522 +01:00 [INF] Request finished in 14.3686ms 200 application/json
+2021-11-28 20:20:07.932 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:20:07.938 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:20:08.030 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:20:08.034 +01:00 [INF] Request finished in 101.845ms 200 text/html
+2021-11-28 20:20:10.177 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:10.188 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:10.201 +01:00 [INF] Request finished in 23.8851ms 200 application/json
+2021-11-28 20:20:12.215 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:12.220 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:12.226 +01:00 [INF] Request finished in 11.1019ms 200 application/json
+2021-11-28 20:20:14.269 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:14.275 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:14.282 +01:00 [INF] Request finished in 13.1282ms 200 application/json
+2021-11-28 20:20:16.310 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:16.320 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:16.329 +01:00 [INF] Request finished in 19.1721ms 200 application/json
+2021-11-28 20:20:18.349 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:18.354 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:18.360 +01:00 [INF] Request finished in 10.3714ms 200 application/json
+2021-11-28 20:20:20.371 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:20.377 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:20.383 +01:00 [INF] Request finished in 12.1062ms 200 application/json
+2021-11-28 20:20:22.429 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/recurring/remove application/x-www-form-urlencoded; charset=UTF-8 52
+2021-11-28 20:20:22.434 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:22.435 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:22.439 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:22.446 +01:00 [INF] Request finished in 11.2346ms 200 application/json
+2021-11-28 20:20:22.459 +01:00 [INF] Request finished in 29.5907ms 204 
+2021-11-28 20:20:22.471 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:20:22.475 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:20:22.482 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:20:22.486 +01:00 [INF] Request finished in 14.4476ms 200 text/html
+2021-11-28 20:20:24.536 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:24.541 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:24.547 +01:00 [INF] Request finished in 10.9809ms 200 application/json
+2021-11-28 20:20:26.016 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/recurring/trigger application/x-www-form-urlencoded; charset=UTF-8 46
+2021-11-28 20:20:26.022 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:26.078 +01:00 [INF] Request finished in 62.1283ms 204 
+2021-11-28 20:20:26.097 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:20:26.102 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:20:26.122 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:20:26.127 +01:00 [INF] Request finished in 29.6742ms 200 text/html
+2021-11-28 20:20:26.722 +01:00 [INF] Entity Framework Core 3.1.21 initialized 'DronesApiContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-11-28 20:20:27.126 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[BatterCapacity] AS [BatteryCapacity], [d].[DroneId]
+FROM [Drones] AS [d]
+2021-11-28 20:20:27.151 +01:00 [INF] [{"BatteryCapacity":100,"DroneId":"b5b6a5cd-ebc0-434d-a1a6-38556840948f"},{"BatteryCapacity":100,"DroneId":"a9715d4a-6ebd-450b-b55b-751a9faadd00"},{"BatteryCapacity":100,"DroneId":"8f4f64b0-b0e8-4e96-a555-7eac8ba66505"},{"BatteryCapacity":100,"DroneId":"2035fb8d-f31c-4225-be3a-b250fb704fb9"},{"BatteryCapacity":100,"DroneId":"91d7c4cd-1b96-4546-abcf-b8e086b26995"},{"BatteryCapacity":100,"DroneId":"a9588e8b-486f-45f1-bb83-d02bee9a2d3b"},{"BatteryCapacity":100,"DroneId":"8af14faf-d8d9-4ab6-9281-dacb4ae340ef"},{"BatteryCapacity":100,"DroneId":"0c00ee4e-b6f7-4fe7-94ed-ed5abd2a73d3"},{"BatteryCapacity":100,"DroneId":"cc19ad1e-7fd1-4094-9bef-ee9d7d5d7360"},{"BatteryCapacity":100,"DroneId":"1daa4db5-0ce9-4cb3-9388-fd4317cb3904"}]
+2021-11-28 20:20:28.203 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:28.208 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:28.223 +01:00 [INF] Request finished in 20.361ms 200 application/json
+2021-11-28 20:20:30.253 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:30.258 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:30.264 +01:00 [INF] Request finished in 10.2599ms 200 application/json
+2021-11-28 20:20:32.607 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:32.612 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:32.617 +01:00 [INF] Request finished in 10.367ms 200 application/json
+2021-11-28 20:20:35.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:35.571 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:35.578 +01:00 [INF] Request finished in 12.217ms 200 application/json
+2021-11-28 20:20:38.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:38.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:38.578 +01:00 [INF] Request finished in 9.0744ms 200 application/json
+2021-11-28 20:20:41.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:41.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:41.571 +01:00 [INF] Request finished in 10.7588ms 200 application/json
+2021-11-28 20:20:44.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:44.579 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:44.584 +01:00 [INF] Request finished in 17.0489ms 200 application/json
+2021-11-28 20:20:47.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:47.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:47.573 +01:00 [INF] Request finished in 9.2429ms 200 application/json
+2021-11-28 20:20:50.553 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:50.556 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:50.562 +01:00 [INF] Request finished in 9.1045ms 200 application/json
+2021-11-28 20:20:53.570 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:53.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:53.580 +01:00 [INF] Request finished in 9.7892ms 200 application/json
+2021-11-28 20:20:56.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:56.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:56.572 +01:00 [INF] Request finished in 9.313ms 200 application/json
+2021-11-28 20:20:59.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:20:59.564 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:20:59.604 +01:00 [INF] Request finished in 43.7764ms 200 application/json
+2021-11-28 20:21:02.554 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:02.559 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:02.575 +01:00 [INF] Request finished in 20.3183ms 200 application/json
+2021-11-28 20:21:05.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:05.562 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:05.573 +01:00 [INF] Request finished in 16.3548ms 200 application/json
+2021-11-28 20:21:08.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:08.563 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:08.569 +01:00 [INF] Request finished in 9.2402ms 200 application/json
+2021-11-28 20:21:11.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:11.571 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:11.576 +01:00 [INF] Request finished in 10.0598ms 200 application/json
+2021-11-28 20:21:14.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:14.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:14.577 +01:00 [INF] Request finished in 11.9103ms 200 application/json
+2021-11-28 20:21:17.552 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:17.556 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:17.562 +01:00 [INF] Request finished in 9.6954ms 200 application/json
+2021-11-28 20:21:20.558 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:20.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:20.571 +01:00 [INF] Request finished in 12.955ms 200 application/json
+2021-11-28 20:21:23.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:23.561 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:23.564 +01:00 [INF] Request finished in 7.8355ms 200 application/json
+2021-11-28 20:21:26.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:26.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:26.572 +01:00 [INF] Request finished in 8.3376ms 200 application/json
+2021-11-28 20:21:29.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:29.571 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:29.575 +01:00 [INF] Request finished in 10.2269ms 200 application/json
+2021-11-28 20:21:32.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:32.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:32.577 +01:00 [INF] Request finished in 9.8102ms 200 application/json
+2021-11-28 20:21:35.592 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:35.596 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:35.601 +01:00 [INF] Request finished in 9.2378ms 200 application/json
+2021-11-28 20:21:38.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:38.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:38.571 +01:00 [INF] Request finished in 6.6686ms 200 application/json
+2021-11-28 20:21:41.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:41.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:41.569 +01:00 [INF] Request finished in 7.082ms 200 application/json
+2021-11-28 20:21:44.568 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:44.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:44.578 +01:00 [INF] Request finished in 9.4673ms 200 application/json
+2021-11-28 20:21:47.552 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:47.556 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:47.562 +01:00 [INF] Request finished in 9.9417ms 200 application/json
+2021-11-28 20:21:50.555 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:50.559 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:50.563 +01:00 [INF] Request finished in 8.5761ms 200 application/json
+2021-11-28 20:21:53.574 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:53.579 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:53.586 +01:00 [INF] Request finished in 11.5109ms 200 application/json
+2021-11-28 20:21:56.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:56.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:56.570 +01:00 [INF] Request finished in 8.0091ms 200 application/json
+2021-11-28 20:21:59.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:21:59.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:21:59.575 +01:00 [INF] Request finished in 7.8999ms 200 application/json
+2021-11-28 20:22:02.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:02.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:02.571 +01:00 [INF] Request finished in 9.8823ms 200 application/json
+2021-11-28 20:22:05.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:05.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:05.579 +01:00 [INF] Request finished in 16.2303ms 200 application/json
+2021-11-28 20:22:08.574 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:08.580 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:08.591 +01:00 [INF] Request finished in 17.8385ms 200 application/json
+2021-11-28 20:22:11.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:11.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:11.588 +01:00 [INF] Request finished in 18.984ms 200 application/json
+2021-11-28 20:22:14.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:14.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:14.571 +01:00 [INF] Request finished in 8.4771ms 200 application/json
+2021-11-28 20:22:17.559 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:17.564 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:17.568 +01:00 [INF] Request finished in 9.1067ms 200 application/json
+2021-11-28 20:22:20.554 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:20.557 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:20.561 +01:00 [INF] Request finished in 6.6767ms 200 application/json
+2021-11-28 20:22:22.581 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:22.585 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:22.589 +01:00 [INF] Request finished in 8.0227ms 200 application/json
+2021-11-28 20:22:24.617 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:24.622 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:24.627 +01:00 [INF] Request finished in 10.4435ms 200 application/json
+2021-11-28 20:22:26.359 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/recurring/trigger application/x-www-form-urlencoded; charset=UTF-8 46
+2021-11-28 20:22:26.364 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:26.394 +01:00 [INF] Request finished in 34.8942ms 204 
+2021-11-28 20:22:26.407 +01:00 [INF] Entity Framework Core 3.1.21 initialized 'DronesApiContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-11-28 20:22:26.417 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:22:26.422 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:22:26.424 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[BatterCapacity] AS [BatteryCapacity], [d].[DroneId]
+FROM [Drones] AS [d]
+2021-11-28 20:22:26.432 +01:00 [INF] [{"BatteryCapacity":100,"DroneId":"b5b6a5cd-ebc0-434d-a1a6-38556840948f"},{"BatteryCapacity":100,"DroneId":"a9715d4a-6ebd-450b-b55b-751a9faadd00"},{"BatteryCapacity":100,"DroneId":"8f4f64b0-b0e8-4e96-a555-7eac8ba66505"},{"BatteryCapacity":100,"DroneId":"2035fb8d-f31c-4225-be3a-b250fb704fb9"},{"BatteryCapacity":100,"DroneId":"91d7c4cd-1b96-4546-abcf-b8e086b26995"},{"BatteryCapacity":100,"DroneId":"a9588e8b-486f-45f1-bb83-d02bee9a2d3b"},{"BatteryCapacity":100,"DroneId":"8af14faf-d8d9-4ab6-9281-dacb4ae340ef"},{"BatteryCapacity":100,"DroneId":"0c00ee4e-b6f7-4fe7-94ed-ed5abd2a73d3"},{"BatteryCapacity":100,"DroneId":"cc19ad1e-7fd1-4094-9bef-ee9d7d5d7360"},{"BatteryCapacity":100,"DroneId":"1daa4db5-0ce9-4cb3-9388-fd4317cb3904"}]
+2021-11-28 20:22:26.445 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:22:26.450 +01:00 [INF] Request finished in 32.4479ms 200 text/html
+2021-11-28 20:22:28.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:28.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:28.570 +01:00 [INF] Request finished in 8.4836ms 200 application/json
+2021-11-28 20:22:31.577 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:31.582 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:31.588 +01:00 [INF] Request finished in 10.7025ms 200 application/json
+2021-11-28 20:22:34.555 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:34.558 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:34.564 +01:00 [INF] Request finished in 9.705ms 200 application/json
+2021-11-28 20:22:37.592 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:37.595 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:37.599 +01:00 [INF] Request finished in 7.2499ms 200 application/json
+2021-11-28 20:22:40.573 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:40.576 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:40.580 +01:00 [INF] Request finished in 7.6493ms 200 application/json
+2021-11-28 20:22:43.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:43.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:43.572 +01:00 [INF] Request finished in 8.7395ms 200 application/json
+2021-11-28 20:22:46.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:46.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:46.581 +01:00 [INF] Request finished in 14.1235ms 200 application/json
+2021-11-28 20:22:49.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:49.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:49.573 +01:00 [INF] Request finished in 13.5424ms 200 application/json
+2021-11-28 20:22:52.582 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:52.590 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:52.600 +01:00 [INF] Request finished in 18.1384ms 200 application/json
+2021-11-28 20:22:55.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:55.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:55.573 +01:00 [INF] Request finished in 15.7269ms 200 application/json
+2021-11-28 20:22:58.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:22:58.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:22:58.575 +01:00 [INF] Request finished in 12.3328ms 200 application/json
+2021-11-28 20:23:01.570 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:01.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:01.590 +01:00 [INF] Request finished in 20.1063ms 200 application/json
+2021-11-28 20:23:04.705 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:04.714 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:04.728 +01:00 [INF] Request finished in 22.9054ms 200 application/json
+2021-11-28 20:23:06.760 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:06.766 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:06.773 +01:00 [INF] Request finished in 13.3276ms 200 application/json
+2021-11-28 20:23:08.804 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:08.817 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:08.829 +01:00 [INF] Request finished in 25.1043ms 200 application/json
+2021-11-28 20:23:10.188 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/servers  
+2021-11-28 20:23:10.195 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:23:10.230 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:23:10.236 +01:00 [INF] Request finished in 47.5777ms 200 text/html
+2021-11-28 20:23:12.389 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:12.398 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:12.427 +01:00 [INF] Request finished in 38.3005ms 200 application/json
+2021-11-28 20:23:13.362 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:23:13.369 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:23:13.413 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:23:13.420 +01:00 [INF] Request finished in 58.4491ms 200 text/html
+2021-11-28 20:23:16.559 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:16.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:16.601 +01:00 [INF] Request finished in 42.1053ms 200 application/json
+2021-11-28 20:23:19.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:19.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:19.582 +01:00 [INF] Request finished in 12.4819ms 200 application/json
+2021-11-28 20:23:22.729 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:22.734 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:22.743 +01:00 [INF] Request finished in 13.7037ms 200 application/json
+2021-11-28 20:23:25.609 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:25.616 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:25.624 +01:00 [INF] Request finished in 15.6668ms 200 application/json
+2021-11-28 20:23:28.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:28.579 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:28.590 +01:00 [INF] Request finished in 19.0427ms 200 application/json
+2021-11-28 20:23:31.728 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:31.733 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:31.741 +01:00 [INF] Request finished in 13.8033ms 200 application/json
+2021-11-28 20:23:34.552 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:34.558 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:34.565 +01:00 [INF] Request finished in 12.2764ms 200 application/json
+2021-11-28 20:23:37.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:37.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:37.590 +01:00 [INF] Request finished in 21.6079ms 200 application/json
+2021-11-28 20:23:40.779 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:40.786 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:40.795 +01:00 [INF] Request finished in 16.021ms 200 application/json
+2021-11-28 20:23:43.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:43.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:43.578 +01:00 [INF] Request finished in 20.592ms 200 application/json
+2021-11-28 20:23:46.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:46.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:46.573 +01:00 [INF] Request finished in 12.3576ms 200 application/json
+2021-11-28 20:23:49.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:49.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:49.589 +01:00 [INF] Request finished in 26.2485ms 200 application/json
+2021-11-28 20:23:52.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:52.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:52.580 +01:00 [INF] Request finished in 20.0349ms 200 application/json
+2021-11-28 20:23:55.552 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:55.556 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:55.563 +01:00 [INF] Request finished in 11.7135ms 200 application/json
+2021-11-28 20:23:58.573 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:23:58.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:23:58.585 +01:00 [INF] Request finished in 11.965ms 200 application/json
+2021-11-28 20:24:01.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:01.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:01.579 +01:00 [INF] Request finished in 18.5071ms 200 application/json
+2021-11-28 20:24:04.555 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:04.560 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:04.568 +01:00 [INF] Request finished in 13.6506ms 200 application/json
+2021-11-28 20:24:07.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:07.580 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:07.590 +01:00 [INF] Request finished in 18.8462ms 200 application/json
+2021-11-28 20:24:10.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:10.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:10.580 +01:00 [INF] Request finished in 19.251ms 200 application/json
+2021-11-28 20:24:13.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:13.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:13.575 +01:00 [INF] Request finished in 14.5949ms 200 application/json
+2021-11-28 20:24:16.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:16.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:16.609 +01:00 [INF] Request finished in 48.7278ms 200 application/json
+2021-11-28 20:24:19.577 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:19.586 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:19.610 +01:00 [INF] Request finished in 32.8482ms 200 application/json
+2021-11-28 20:24:22.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:22.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:22.602 +01:00 [INF] Request finished in 37.2015ms 200 application/json
+2021-11-28 20:24:25.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:25.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:25.582 +01:00 [INF] Request finished in 15.3801ms 200 application/json
+2021-11-28 20:24:28.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:28.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:28.588 +01:00 [INF] Request finished in 16.928ms 200 application/json
+2021-11-28 20:24:31.602 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:31.608 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:31.616 +01:00 [INF] Request finished in 14.3598ms 200 application/json
+2021-11-28 20:24:34.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:34.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:34.584 +01:00 [INF] Request finished in 18.9811ms 200 application/json
+2021-11-28 20:24:37.693 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:37.702 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:37.710 +01:00 [INF] Request finished in 16.9285ms 200 application/json
+2021-11-28 20:24:40.558 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:40.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:40.578 +01:00 [INF] Request finished in 19.676ms 200 application/json
+2021-11-28 20:24:43.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:43.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:43.586 +01:00 [INF] Request finished in 20.4992ms 200 application/json
+2021-11-28 20:24:46.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:46.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:46.580 +01:00 [INF] Request finished in 11.3771ms 200 application/json
+2021-11-28 20:24:49.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:49.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:49.583 +01:00 [INF] Request finished in 17.7912ms 200 application/json
+2021-11-28 20:24:52.689 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:52.695 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:52.703 +01:00 [INF] Request finished in 14.3388ms 200 application/json
+2021-11-28 20:24:55.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:55.571 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:55.582 +01:00 [INF] Request finished in 20.4904ms 200 application/json
+2021-11-28 20:24:58.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:24:58.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:24:58.579 +01:00 [INF] Request finished in 12.6674ms 200 application/json
+2021-11-28 20:25:01.559 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:01.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:01.580 +01:00 [INF] Request finished in 20.5715ms 200 application/json
+2021-11-28 20:25:04.583 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:04.592 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:04.605 +01:00 [INF] Request finished in 21.756ms 200 application/json
+2021-11-28 20:25:07.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:07.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:07.590 +01:00 [INF] Request finished in 20.6251ms 200 application/json
+2021-11-28 20:25:10.572 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:10.580 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:10.590 +01:00 [INF] Request finished in 17.9079ms 200 application/json
+2021-11-28 20:25:13.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:13.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:13.586 +01:00 [INF] Request finished in 20.977ms 200 application/json
+2021-11-28 20:25:16.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:16.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:16.588 +01:00 [INF] Request finished in 16.5297ms 200 application/json
+2021-11-28 20:25:19.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:19.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:19.587 +01:00 [INF] Request finished in 21.7955ms 200 application/json
+2021-11-28 20:25:22.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:22.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:22.585 +01:00 [INF] Request finished in 25.3031ms 200 application/json
+2021-11-28 20:25:25.023 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:25.028 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:25.051 +01:00 [INF] Request finished in 28.1417ms 200 application/json
+2021-11-28 20:25:27.080 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:27.089 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:27.120 +01:00 [INF] Request finished in 39.6337ms 200 application/json
+2021-11-28 20:25:28.758 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/recurring/trigger application/x-www-form-urlencoded; charset=UTF-8 46
+2021-11-28 20:25:28.767 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:28.837 +01:00 [INF] Request finished in 79.0263ms 204 
+2021-11-28 20:25:28.861 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:25:28.868 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:25:28.883 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:25:28.889 +01:00 [INF] Request finished in 28.0955ms 200 text/html
+2021-11-28 20:25:28.928 +01:00 [INF] Entity Framework Core 3.1.21 initialized 'DronesApiContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-11-28 20:25:28.939 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[BatterCapacity] AS [BatteryCapacity], [d].[DroneId]
+FROM [Drones] AS [d]
+2021-11-28 20:25:28.945 +01:00 [INF] [{"BatteryCapacity":100,"DroneId":"b5b6a5cd-ebc0-434d-a1a6-38556840948f"},{"BatteryCapacity":100,"DroneId":"a9715d4a-6ebd-450b-b55b-751a9faadd00"},{"BatteryCapacity":100,"DroneId":"8f4f64b0-b0e8-4e96-a555-7eac8ba66505"},{"BatteryCapacity":100,"DroneId":"2035fb8d-f31c-4225-be3a-b250fb704fb9"},{"BatteryCapacity":100,"DroneId":"91d7c4cd-1b96-4546-abcf-b8e086b26995"},{"BatteryCapacity":100,"DroneId":"a9588e8b-486f-45f1-bb83-d02bee9a2d3b"},{"BatteryCapacity":100,"DroneId":"8af14faf-d8d9-4ab6-9281-dacb4ae340ef"},{"BatteryCapacity":100,"DroneId":"0c00ee4e-b6f7-4fe7-94ed-ed5abd2a73d3"},{"BatteryCapacity":100,"DroneId":"cc19ad1e-7fd1-4094-9bef-ee9d7d5d7360"},{"BatteryCapacity":100,"DroneId":"1daa4db5-0ce9-4cb3-9388-fd4317cb3904"}]
+2021-11-28 20:25:31.570 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:31.577 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:31.596 +01:00 [INF] Request finished in 26.2596ms 200 application/json
+2021-11-28 20:25:34.559 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:34.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:34.579 +01:00 [INF] Request finished in 20.0075ms 200 application/json
+2021-11-28 20:25:37.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:37.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:37.582 +01:00 [INF] Request finished in 21.8083ms 200 application/json
+2021-11-28 20:25:40.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:40.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:40.581 +01:00 [INF] Request finished in 19.5857ms 200 application/json
+2021-11-28 20:25:43.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:43.562 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:43.569 +01:00 [INF] Request finished in 12.2732ms 200 application/json
+2021-11-28 20:25:46.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:46.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:46.581 +01:00 [INF] Request finished in 21.1895ms 200 application/json
+2021-11-28 20:25:49.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:49.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:49.584 +01:00 [INF] Request finished in 22.6555ms 200 application/json
+2021-11-28 20:25:52.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:52.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:52.589 +01:00 [INF] Request finished in 18.4777ms 200 application/json
+2021-11-28 20:25:55.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:55.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:55.587 +01:00 [INF] Request finished in 16.2663ms 200 application/json
+2021-11-28 20:25:58.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:25:58.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:25:58.584 +01:00 [INF] Request finished in 21.4052ms 200 application/json
+2021-11-28 20:26:01.561 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:01.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:01.581 +01:00 [INF] Request finished in 20.0948ms 200 application/json
+2021-11-28 20:26:04.558 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:04.564 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:04.572 +01:00 [INF] Request finished in 13.4027ms 200 application/json
+2021-11-28 20:26:07.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:07.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:07.582 +01:00 [INF] Request finished in 17.3935ms 200 application/json
+2021-11-28 20:26:10.621 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:10.627 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:10.633 +01:00 [INF] Request finished in 12.4575ms 200 application/json
+2021-11-28 20:26:13.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:13.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:13.587 +01:00 [INF] Request finished in 21.5884ms 200 application/json
+2021-11-28 20:26:16.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:16.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:16.591 +01:00 [INF] Request finished in 22.1745ms 200 application/json
+2021-11-28 20:26:19.558 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:19.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:19.576 +01:00 [INF] Request finished in 18.3084ms 200 application/json
+2021-11-28 20:26:22.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:22.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:22.577 +01:00 [INF] Request finished in 14.7986ms 200 application/json
+2021-11-28 20:26:25.558 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:25.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:25.577 +01:00 [INF] Request finished in 19.1987ms 200 application/json
+2021-11-28 20:26:28.576 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:28.585 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:28.613 +01:00 [INF] Request finished in 36.8034ms 200 application/json
+2021-11-28 20:26:31.571 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:31.580 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:31.607 +01:00 [INF] Request finished in 35.6007ms 200 application/json
+2021-11-28 20:26:34.602 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:34.613 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:34.646 +01:00 [INF] Request finished in 43.1319ms 200 application/json
+2021-11-28 20:26:37.568 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:37.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:37.582 +01:00 [INF] Request finished in 14.5757ms 200 application/json
+2021-11-28 20:26:40.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:40.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:40.588 +01:00 [INF] Request finished in 25.3649ms 200 application/json
+2021-11-28 20:26:43.699 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:43.704 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:43.710 +01:00 [INF] Request finished in 10.8745ms 200 application/json
+2021-11-28 20:26:46.607 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:46.615 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:46.626 +01:00 [INF] Request finished in 19.0607ms 200 application/json
+2021-11-28 20:26:49.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:49.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:49.589 +01:00 [INF] Request finished in 20.0968ms 200 application/json
+2021-11-28 20:26:52.570 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:52.579 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:52.588 +01:00 [INF] Request finished in 18.4913ms 200 application/json
+2021-11-28 20:26:55.556 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:55.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:55.577 +01:00 [INF] Request finished in 21.2089ms 200 application/json
+2021-11-28 20:26:58.637 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:26:58.647 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:26:58.661 +01:00 [INF] Request finished in 23.8431ms 200 application/json
+2021-11-28 20:27:01.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:01.565 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:01.576 +01:00 [INF] Request finished in 18.4304ms 200 application/json
+2021-11-28 20:27:04.568 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:04.576 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:04.588 +01:00 [INF] Request finished in 20.3758ms 200 application/json
+2021-11-28 20:27:07.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:07.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:07.579 +01:00 [INF] Request finished in 15.5294ms 200 application/json
+2021-11-28 20:27:10.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:10.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:10.582 +01:00 [INF] Request finished in 14.0969ms 200 application/json
+2021-11-28 20:27:13.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:13.578 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:13.590 +01:00 [INF] Request finished in 20.8475ms 200 application/json
+2021-11-28 20:27:16.559 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:16.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:16.574 +01:00 [INF] Request finished in 14.8561ms 200 application/json
+2021-11-28 20:27:19.570 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:19.576 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:19.584 +01:00 [INF] Request finished in 14.6552ms 200 application/json
+2021-11-28 20:27:22.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:22.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:22.578 +01:00 [INF] Request finished in 17.6521ms 200 application/json
+2021-11-28 20:27:25.558 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:25.567 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:25.580 +01:00 [INF] Request finished in 22.1302ms 200 application/json
+2021-11-28 20:27:28.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:28.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:28.580 +01:00 [INF] Request finished in 20.0634ms 200 application/json
+2021-11-28 20:27:31.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:31.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:31.582 +01:00 [INF] Request finished in 18.8224ms 200 application/json
+2021-11-28 20:27:34.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:34.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:34.605 +01:00 [INF] Request finished in 44.8502ms 200 application/json
+2021-11-28 20:27:37.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:37.574 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:37.594 +01:00 [INF] Request finished in 26.0999ms 200 application/json
+2021-11-28 20:27:40.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:40.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:40.602 +01:00 [INF] Request finished in 37.3709ms 200 application/json
+2021-11-28 20:27:43.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:43.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:43.583 +01:00 [INF] Request finished in 19.7524ms 200 application/json
+2021-11-28 20:27:46.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:46.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:46.583 +01:00 [INF] Request finished in 21.3108ms 200 application/json
+2021-11-28 20:27:49.611 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:49.619 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:49.628 +01:00 [INF] Request finished in 16.9941ms 200 application/json
+2021-11-28 20:27:52.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:52.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:52.581 +01:00 [INF] Request finished in 11.6031ms 200 application/json
+2021-11-28 20:27:55.570 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:55.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:55.583 +01:00 [INF] Request finished in 12.4037ms 200 application/json
+2021-11-28 20:27:58.565 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:27:58.575 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:27:58.588 +01:00 [INF] Request finished in 22.3242ms 200 application/json
+2021-11-28 20:28:01.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:01.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:01.583 +01:00 [INF] Request finished in 18.8446ms 200 application/json
+2021-11-28 20:28:04.568 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:04.576 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:04.587 +01:00 [INF] Request finished in 18.5819ms 200 application/json
+2021-11-28 20:28:07.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:07.573 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:07.579 +01:00 [INF] Request finished in 10.3744ms 200 application/json
+2021-11-28 20:28:10.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:10.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:10.584 +01:00 [INF] Request finished in 21.1226ms 200 application/json
+2021-11-28 20:28:13.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:13.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:13.577 +01:00 [INF] Request finished in 17.1962ms 200 application/json
+2021-11-28 20:28:16.564 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:16.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:16.576 +01:00 [INF] Request finished in 12.6907ms 200 application/json
+2021-11-28 20:28:18.597 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:18.605 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:18.617 +01:00 [INF] Request finished in 19.8977ms 200 application/json
+2021-11-28 20:28:20.633 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:20.641 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:20.654 +01:00 [INF] Request finished in 20.5819ms 200 application/json
+2021-11-28 20:28:23.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:28:23.569 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:28:23.579 +01:00 [INF] Request finished in 18.7547ms 200 application/json
+2021-11-28 20:32:01.489 +01:00 [INF] Start installing Hangfire SQL objects...
+2021-11-28 20:32:02.054 +01:00 [INF] Hangfire SQL objects installed.
+2021-11-28 20:32:02.102 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .\SQLEXPRESS@DronesDb'
+2021-11-28 20:32:02.105 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2021-11-28 20:32:02.108 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-11-28 20:32:02.473 +01:00 [INF] Server desktop-0s2aaav:21952:421d2bc9 successfully announced in 320.27 ms
+2021-11-28 20:32:02.483 +01:00 [INF] Server desktop-0s2aaav:21952:421d2bc9 is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-11-28 20:32:02.633 +01:00 [INF] Server desktop-0s2aaav:21952:421d2bc9 all the dispatchers started
+2021-11-28 20:32:02.877 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-28 20:32:02.883 +01:00 [INF] Hosting environment: Development
+2021-11-28 20:32:02.887 +01:00 [INF] Content root path: C:\Users\DELL\source\repos\drones_api
+2021-11-28 20:32:02.913 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/swagger/index.html  
+2021-11-28 20:32:03.168 +01:00 [INF] Request finished in 257.976ms 200 text/html;charset=utf-8
+2021-11-28 20:32:03.451 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/swagger/v1/swagger.json  
+2021-11-28 20:32:03.733 +01:00 [INF] Request finished in 283.1615ms 200 application/json;charset=utf-8
+2021-11-28 20:32:37.237 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs  
+2021-11-28 20:32:37.314 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:32:37.721 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:32:37.726 +01:00 [INF] Request finished in 489.6724ms 200 text/html
+2021-11-28 20:32:40.108 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:40.118 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:40.186 +01:00 [INF] Request finished in 78.9129ms 200 application/json
+2021-11-28 20:32:42.207 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:42.212 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:42.229 +01:00 [INF] Request finished in 22.0547ms 200 application/json
+2021-11-28 20:32:44.254 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:44.263 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:44.281 +01:00 [INF] Request finished in 26.7454ms 200 application/json
+2021-11-28 20:32:46.309 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:46.318 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:46.329 +01:00 [INF] Request finished in 20.032ms 200 application/json
+2021-11-28 20:32:48.348 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:48.353 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:48.365 +01:00 [INF] Request finished in 17.1892ms 200 application/json
+2021-11-28 20:32:50.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:50.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:50.584 +01:00 [INF] Request finished in 17.4226ms 200 application/json
+2021-11-28 20:32:53.582 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:53.587 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:53.596 +01:00 [INF] Request finished in 14.1914ms 200 application/json
+2021-11-28 20:32:56.590 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:56.598 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:56.615 +01:00 [INF] Request finished in 24.8404ms 200 application/json
+2021-11-28 20:32:59.557 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:32:59.566 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:32:59.581 +01:00 [INF] Request finished in 23.7461ms 200 application/json
+2021-11-28 20:33:02.568 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:33:02.577 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:33:02.592 +01:00 [INF] Request finished in 23.9088ms 200 application/json
+2021-11-28 20:33:05.574 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:33:05.580 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:33:05.611 +01:00 [INF] Request finished in 37.0045ms 200 application/json
+2021-11-28 20:33:07.643 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:33:07.653 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:33:07.683 +01:00 [INF] Request finished in 39.2456ms 200 application/json
+2021-11-28 20:38:32.050 +01:00 [INF] Start installing Hangfire SQL objects...
+2021-11-28 20:38:32.453 +01:00 [INF] Hangfire SQL objects installed.
+2021-11-28 20:38:32.499 +01:00 [INF] Starting Hangfire Server using job storage: 'SQL Server: .\SQLEXPRESS@DronesDb'
+2021-11-28 20:38:32.502 +01:00 [INF] Using the following options for SQL Server job storage: Queue poll interval: 00:00:15.
+2021-11-28 20:38:32.504 +01:00 [INF] Using the following options for Hangfire Server:
+    Worker count: 20
+    Listening queues: 'default'
+    Shutdown timeout: 00:00:15
+    Schedule polling interval: 00:00:15
+2021-11-28 20:38:32.804 +01:00 [INF] Server desktop-0s2aaav:56236:9aca771d successfully announced in 268.2557 ms
+2021-11-28 20:38:32.813 +01:00 [INF] Server desktop-0s2aaav:56236:9aca771d is starting the registered dispatchers: ServerWatchdog, ServerJobCancellationWatcher, ExpirationManager, CountersAggregator, Worker, DelayedJobScheduler, RecurringJobScheduler...
+2021-11-28 20:38:32.863 +01:00 [INF] 2 servers were removed due to timeout
+2021-11-28 20:38:32.971 +01:00 [INF] Server desktop-0s2aaav:56236:9aca771d all the dispatchers started
+2021-11-28 20:38:33.206 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-11-28 20:38:33.211 +01:00 [INF] Hosting environment: Development
+2021-11-28 20:38:33.215 +01:00 [INF] Content root path: C:\Users\DELL\source\repos\drones_api
+2021-11-28 20:38:33.241 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/swagger/index.html  
+2021-11-28 20:38:33.498 +01:00 [INF] Request finished in 260.4156ms 200 text/html;charset=utf-8
+2021-11-28 20:38:33.682 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/swagger/v1/swagger.json  
+2021-11-28 20:38:33.887 +01:00 [INF] Request finished in 204.8862ms 200 application/json;charset=utf-8
+2021-11-28 20:38:42.411 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs  
+2021-11-28 20:38:42.446 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:38:42.607 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:38:42.612 +01:00 [INF] Request finished in 201.5167ms 200 text/html
+2021-11-28 20:38:44.761 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:38:44.766 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:44.794 +01:00 [INF] Request finished in 34.3568ms 200 application/json
+2021-11-28 20:38:46.810 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:38:46.816 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:46.826 +01:00 [INF] Request finished in 15.7746ms 200 application/json
+2021-11-28 20:38:48.841 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 228
+2021-11-28 20:38:48.845 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:48.854 +01:00 [INF] Request finished in 13.6336ms 200 application/json
+2021-11-28 20:38:50.490 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:38:50.495 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:38:50.543 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:38:50.548 +01:00 [INF] Request finished in 58.1346ms 200 text/html
+2021-11-28 20:38:52.653 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:38:52.657 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:52.662 +01:00 [INF] Request finished in 9.6844ms 200 application/json
+2021-11-28 20:38:54.683 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:38:54.687 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:54.693 +01:00 [INF] Request finished in 9.3545ms 200 application/json
+2021-11-28 20:38:55.352 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/recurring/trigger application/x-www-form-urlencoded; charset=UTF-8 46
+2021-11-28 20:38:55.355 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:55.418 +01:00 [INF] Request finished in 65.709ms 204 
+2021-11-28 20:38:55.431 +01:00 [INF] Request starting HTTP/2.0 GET https://localhost:44383/jobs/recurring  
+2021-11-28 20:38:55.435 +01:00 [INF] No cached response available for this request.
+2021-11-28 20:38:55.442 +01:00 [INF] The response could not be cached for this request.
+2021-11-28 20:38:55.447 +01:00 [INF] Request finished in 15.4841ms 200 text/html
+2021-11-28 20:38:56.044 +01:00 [INF] Entity Framework Core 3.1.21 initialized 'DronesApiContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2021-11-28 20:38:56.407 +01:00 [INF] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[BatterCapacity] AS [BatteryCapacity], [d].[DroneId]
+FROM [Drones] AS [d]
+2021-11-28 20:38:56.430 +01:00 [WRN] [{"BatteryCapacity":100,"DroneId":"b5b6a5cd-ebc0-434d-a1a6-38556840948f"},{"BatteryCapacity":100,"DroneId":"a9715d4a-6ebd-450b-b55b-751a9faadd00"},{"BatteryCapacity":100,"DroneId":"8f4f64b0-b0e8-4e96-a555-7eac8ba66505"},{"BatteryCapacity":100,"DroneId":"2035fb8d-f31c-4225-be3a-b250fb704fb9"},{"BatteryCapacity":100,"DroneId":"91d7c4cd-1b96-4546-abcf-b8e086b26995"},{"BatteryCapacity":100,"DroneId":"a9588e8b-486f-45f1-bb83-d02bee9a2d3b"},{"BatteryCapacity":100,"DroneId":"8af14faf-d8d9-4ab6-9281-dacb4ae340ef"},{"BatteryCapacity":100,"DroneId":"0c00ee4e-b6f7-4fe7-94ed-ed5abd2a73d3"},{"BatteryCapacity":100,"DroneId":"cc19ad1e-7fd1-4094-9bef-ee9d7d5d7360"},{"BatteryCapacity":100,"DroneId":"1daa4db5-0ce9-4cb3-9388-fd4317cb3904"}]
+2021-11-28 20:38:57.568 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:38:57.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:38:57.583 +01:00 [INF] Request finished in 15.0537ms 200 application/json
+2021-11-28 20:39:00.560 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:00.564 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:00.571 +01:00 [INF] Request finished in 11.4883ms 200 application/json
+2021-11-28 20:39:03.569 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:03.572 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:03.578 +01:00 [INF] Request finished in 8.8804ms 200 application/json
+2021-11-28 20:39:06.562 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:06.568 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:06.574 +01:00 [INF] Request finished in 11.7128ms 200 application/json
+2021-11-28 20:39:09.563 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:09.571 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:09.576 +01:00 [INF] Request finished in 12.8921ms 200 application/json
+2021-11-28 20:39:12.556 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:12.561 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:12.566 +01:00 [INF] Request finished in 9.9022ms 200 application/json
+2021-11-28 20:39:15.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:15.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:15.575 +01:00 [INF] Request finished in 9.0267ms 200 application/json
+2021-11-28 20:39:18.566 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:18.570 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:18.575 +01:00 [INF] Request finished in 8.8222ms 200 application/json
+2021-11-28 20:39:20.607 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:20.612 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:20.618 +01:00 [INF] Request finished in 10.8713ms 200 application/json
+2021-11-28 20:39:23.567 +01:00 [INF] Request starting HTTP/2.0 POST https://localhost:44383/jobs/stats application/x-www-form-urlencoded; charset=UTF-8 167
+2021-11-28 20:39:23.571 +01:00 [INF] CORS policy execution successful.
+2021-11-28 20:39:23.578 +01:00 [INF] Request finished in 11.0615ms 200 application/json

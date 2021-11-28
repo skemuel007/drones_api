@@ -1,5 +1,6 @@
 ﻿using drones_api.Data;
 using drones_api.Dtos.Request;
+using drones_api.Dtos.Response;
 using drones_api.Models;
 using drones_api.Paging;
 using drones_api.Services.Contracts;
@@ -13,6 +14,7 @@ namespace drones_api.Services.Implementations
 {
     public class DroneRepository : RepositoryBase<Drone>, IDroneRepository
     {
+
         public DroneRepository(DronesApiContext context) : base(context) { }
 
         public async Task<PagedList<Drone>> GetDroneStatesPagedAsync(DroneParameters droneParameters, bool trackChanges)
@@ -72,6 +74,8 @@ namespace drones_api.Services.Implementations
         public async Task<Drone> GetDroneAsync(Guid droneId, bool trackChanges)
         {
             var drone = await FindByCondition(d => d.DroneId == droneId, trackChanges)
+                .Include(d => d.DroneState)
+                .Include(d => d.DroneModel)
                 .FirstOrDefaultAsync();
             return drone;
         }
@@ -88,9 +92,16 @@ namespace drones_api.Services.Implementations
             return SaveChanges();
         }
 
-        public void GetAllDroneBatteryLevels()
+        public ICollection<BatteryLevelsDto> GetAllDroneBatteryLevels()
         {
-            throw new NotImplementedException();
+            var droneBatteryLevels = FindAll(false)
+                .Select(m => new BatteryLevelsDto
+                {
+                    BatteryCapacity = m.BatterCapacity,
+                    DroneId = m.DroneId
+                }).ToList();
+
+            return droneBatteryLevels;
         }
     }
 }
