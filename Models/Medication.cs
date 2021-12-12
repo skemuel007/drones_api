@@ -15,9 +15,9 @@ namespace drones_api.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal Weight { get; set; }
         public string Code { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public virtual ICollection<DroneMedication> DroneMedications { get; set; }
+        public virtual ICollection<DroneItem> DroneItems { get; set; }
     }
 }

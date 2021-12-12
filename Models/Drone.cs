@@ -22,6 +22,6 @@ namespace drones_api.Models
         public virtual DroneModel DroneModel { get; set; }
         public Guid DroneStateId { get; set; }
         public virtual DroneState DroneState { get; set; }
-        public virtual ICollection<DroneMedication> DroneMedications {get; set;}
+        public virtual ICollection<DroneRequest> DroneRequests {get; set;}
     }
 }

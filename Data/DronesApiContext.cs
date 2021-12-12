@@ -48,10 +48,23 @@ namespace drones_api.Data
                 .HasIndex(d => d.StateTitle)
                 .IsUnique();
 
-            modelBuilder.Entity<DroneMedication>()
-                .HasKey(dm => new { dm.DroneId, dm.MedicationId });
+            modelBuilder.Entity<DroneRequest>()
+                .HasIndex(d => d.DroneId)
+                .IsUnique(unique: false);
 
-            modelBuilder.Entity<DroneMedication>()
+            modelBuilder.Entity<DroneItem>()
+                .HasIndex(d => d.DroneRequestId)
+                .IsUnique(unique: false);
+
+            modelBuilder.Entity<DroneItem>()
+                .HasIndex(d => d.MedicationId)
+                .IsUnique(unique: false);
+
+
+            /*modelBuilder.Entity<DroneMedication>()
+                .HasKey(dm => new { dm.DroneId, dm.MedicationId });*/
+
+            /*modelBuilder.Entity<DroneMedication>()
                 .HasOne(dm => dm.Drone)
                 .WithMany(dm => dm.DroneMedications)
                 .HasForeignKey(dm => dm.DroneId);
@@ -59,7 +72,7 @@ namespace drones_api.Data
             modelBuilder.Entity<DroneMedication>()
                 .HasOne(dm => dm.Medication)
                 .WithMany(dm => dm.DroneMedications)
-                .HasForeignKey(dm => dm.MedicationId);
+                .HasForeignKey(dm => dm.MedicationId);*/
 
             // modelBuilder.Entity<Drone>().Property(d => d.WeightLimit).HasColumnType("decimal(18,2)");
         }
@@ -68,7 +81,8 @@ namespace drones_api.Data
         public virtual DbSet<DroneState> DroneStates { get; set; }
         public virtual DbSet<Drone> Drones { get; set; }
         public virtual DbSet<Medication> Medications { get; set; }
-        public virtual DbSet<DroneMedication> DroneMedications { get; set; }
+        public virtual DbSet<DroneRequest> DroneRequests { get; set; }
+        public virtual DbSet<DroneItem> DroneItems { get; set; }
         
     }
 }

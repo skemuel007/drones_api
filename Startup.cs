@@ -21,6 +21,11 @@ using Autofac;
 using drones_api.Helpers;
 using Microsoft.AspNetCore.Http.Features;
 using Autofac.Extensions.DependencyInjection;
+using Hangfire;
+using drones_api.Services.Contracts;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace drones_api
 {
@@ -57,6 +62,22 @@ namespace drones_api
             // enable api health check
             services.AddHealthChecks();
             services.AddHttpContextAccessor();
+
+            services.AddMemoryCache( options =>
+            {
+                options.SizeLimit = 1024;
+            }
+            );
+
+            services.AddResponseCaching( options =>
+            {
+                // Each response cannot be more than 1 KB 
+                options.MaximumBodySize = 1024;
+
+                // Case Sensitive Paths 
+                // Responses to be returned only if case sensitive paths match
+                options.UseCaseSensitivePaths = true;
+            });
 
             // configure response for web api
             services.AddControllers().AddNewtonsoftJson(
@@ -130,8 +151,23 @@ namespace drones_api
 
             services.AddOptions();
 
+            var server = Configuration["DbServer"] ?? "localhost";
+            var port = Configuration["DbPort"] ?? "1433"; // Default SQL Server port
+            var user = Configuration["DbUser"] ?? "SA"; // Warning do not use the SA account
+            var password = Configuration["Password"] ?? "Password@123";
+            var database = Configuration["Database"] ?? "DronesDb";
+
             services.AddDbContext<DronesApiContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
+                    options.UseSqlServer($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}"));
+            //services.AddDbContext<DronesApiContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
+
+            services.AddHangfire(x =>
+            {
+                // x.UseSqlServerStorage(Configuration.GetConnectionString("DronesApiContext"));
+                x.UseSqlServerStorage($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}");
+            });
+            services.AddHangfireServer();
         }
         public void ConfigureContainer(ContainerBuilder containerBuilder)
         {
@@ -141,6 +177,8 @@ namespace drones_api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
+            DatabaseManagementService.MigrationInitialisation(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -165,13 +203,22 @@ namespace drones_api
             app.UseRouting();
 
             app.UseCors(AllowedOriginSpecifications);
+            app.UseResponseCaching();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<RateLimitMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseHangfireDashboard("/jobs");
+
+            RecurringJob.AddOrUpdate<ILogRepository>(
+                batteryLevelReport => batteryLevelReport.LogDroneBatteryLevel(), Cron.Hourly);
+
         }
     }
 }

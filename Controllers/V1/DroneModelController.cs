@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using drones_api.Dtos.Request;
 using drones_api.Dtos.Response;
+using drones_api.Middlewares;
 using drones_api.Models;
 using drones_api.Services.Contracts;
 using Microsoft.AspNetCore.Cors;
@@ -42,6 +43,10 @@ namespace drones_api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<ICollection<DroneModel>>))]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity, Type = typeof(ApiResponse<object>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<object>))]
+        [RateLimitDecorator(StrategyType = StrategyTypeEnum.IpAddress)]
+        [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Any, VaryByQueryKeys = new[] { "OrderBy", "SearchTerm", "Filter", "DescendingOrder" })]
+        // https://medium.com/@ahmadpayan71/implement-a-rate-limiting-middleware-in-asp-net-core-f7425db7f84c
+        // https://hamedfathi.me/a-professional-asp.net-core-api-rate-limit/
         public async Task<IActionResult> GetDroneModels([FromQuery] DroneModelParameters droneModelParameters)
         {
             if (!ModelState.IsValid)
@@ -76,6 +81,7 @@ namespace drones_api.Controllers.V1
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ApiResponse<Object>))]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ApiResponse<DroneModel>))]
         [ProducesResponseType(StatusCodes.Status500InternalServerError, Type = typeof(ApiResponse<Object>))]
+        [RateLimitDecorator(StrategyType = StrategyTypeEnum.IpAddress)]
         public async Task<IActionResult> GetDroneModel(Guid droneModelId)
         {
             // check if drone model exists
