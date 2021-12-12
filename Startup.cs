@@ -151,12 +151,21 @@ namespace drones_api
 
             services.AddOptions();
 
+            var server = Configuration["DbServer"] ?? "localhost";
+            var port = Configuration["DbPort"] ?? "1433"; // Default SQL Server port
+            var user = Configuration["DbUser"] ?? "SA"; // Warning do not use the SA account
+            var password = Configuration["Password"] ?? "Password@123";
+            var database = Configuration["Database"] ?? "DronesDb";
+
             services.AddDbContext<DronesApiContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
+                    options.UseSqlServer($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}"));
+            //services.AddDbContext<DronesApiContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
 
             services.AddHangfire(x =>
             {
-                x.UseSqlServerStorage(Configuration.GetConnectionString("DronesApiContext"));
+                // x.UseSqlServerStorage(Configuration.GetConnectionString("DronesApiContext"));
+                x.UseSqlServerStorage($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}");
             });
             services.AddHangfireServer();
         }
@@ -168,6 +177,8 @@ namespace drones_api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
+            DatabaseManagementService.MigrationInitialisation(app);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
