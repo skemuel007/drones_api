@@ -2,13 +2,26 @@ version: '3.4'
 
 services:
   db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: db
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
     environment:
-      SA_PASSWORD: "Password@123"
+      MSSQL_SA_PASSWORD: "Password@123"
       ACCEPT_EULA: "Y"
-      MSSQL_PID: Express
+      MSSQL_PID: "Developer"
     ports:
       - "1433:1433"
+    depends_on:
+      - migrations
+    networks:
+      - drones-network
+
+  migrations:
+    build:
+      context: .
+      dockerfile: Migrations.Dockerfile
+    networks:
+      - drones-network
+
   drones_api:
     image: dronesapi
     build:
@@ -17,10 +30,16 @@ services:
     environment:
       DbServer : "db"
       DbPort: "1433"
-      DbUser: "SA"
+      DbUser: "sa"
       Password: "Password@123"
       Database: "DronesDb"
     ports:
       - "8090:80"
     depends_on:
+      - migrations
       - db
+    networks:
+      - drones-network
+
+networks:
+  drones-network:

@@ -158,14 +158,14 @@ namespace drones_api
             var database = Configuration["Database"] ?? "DronesDb";
 
             services.AddDbContext<DronesApiContext>(options =>
-                    options.UseSqlServer($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}"));
+                    options.UseSqlServer($"Server={server},{port};Database={database};User Id={user};Password={password}"));
             //services.AddDbContext<DronesApiContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("DronesApiContext")));
 
             services.AddHangfire(x =>
             {
                 // x.UseSqlServerStorage(Configuration.GetConnectionString("DronesApiContext"));
-                x.UseSqlServerStorage($"Server={server}, {port};Initial Catalog={database};User ID={user};Password={password}");
+                x.UseSqlServerStorage($"Server={server},{port};Database={database};User ID={user};Password={password}");
             });
             services.AddHangfireServer();
         }

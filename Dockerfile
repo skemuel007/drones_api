@@ -10,7 +10,7 @@ COPY ["drones_api.csproj", "./"]
 
 RUN dotnet restore "./drones_api.csproj"
 COPY . .
-CMD ["cp", "./appsettings.Development.json", "appsettings.json"]
+COPY appsettings.json .
 RUN dotnet build "drones_api.csproj" -c Release -o /app
 
 FROM build AS publish
